@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
@@ -24,6 +25,7 @@ class InvertMe extends FlameGame {
     for (final entry in miniMap.objects.entries) {
       final sprite = sprites[entry.value['sprite']];
       if (sprite != null) {
+        print(entry.value['sprite']);
         unawaited(
           add(
             SpriteComponent(
@@ -45,4 +47,7 @@ class InvertMe extends FlameGame {
     camera.zoom = 4;
     camera.snapTo(-size / 2);
   }
+
+  @override
+  Future<void> update(double dt) async {}
 }
