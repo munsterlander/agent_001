@@ -1,0 +1,22 @@
+name: invert_me
+description: A simple Flame game.
+version: 0.1.0
+
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.10.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: 1.0.0-releasecandidate.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: false
