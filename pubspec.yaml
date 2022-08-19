@@ -11,8 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   flame: 1.3.0
+  mini_sprite: ^0.0.1
+  flame_mini_sprite: ^0.0.1
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
   integration_test:
