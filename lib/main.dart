@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
@@ -15,7 +14,8 @@ void main() {
 class InvertMe extends FlameGame {
   @override
   Future<void> onLoad() async {
-    final miniLibrary = MiniLibrary.fromDataString(characterAnimation);
+    final miniLibrary = MiniLibrary.fromDataString(stickManAnimation);
+
     final sprites = await miniLibrary.toSprites(
       color: Colors.white,
       pixelSize: 1,
