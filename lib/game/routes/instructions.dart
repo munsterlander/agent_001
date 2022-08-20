@@ -1,8 +1,7 @@
 import 'package:agent_001/game/game.dart';
+import 'package:agent_001/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Instructions extends PositionComponent with HasGameRef<Agent001Game> {
   Instructions({
@@ -17,15 +16,15 @@ class Instructions extends PositionComponent with HasGameRef<Agent001Game> {
     positionType = PositionType.viewport;
   }
 
+  late ButtonComponent closeButton;
+
   @override
-  Future<void>? onLoad() {
+  Future<void>? onLoad() async {
     add(
-      ButtonComponent(
+      closeButton = ButtonComponent(
         button: TextBoxComponent(
-          textRenderer: TextPaint(
-            style: GoogleFonts.pressStart2p(color: Colors.white),
-          ),
-          text: 'Play',
+          textRenderer: pixelFont,
+          text: 'These are instructions and click to close',
           boxConfig: TextBoxConfig(
             growingBox: true,
           ),
@@ -34,10 +33,20 @@ class Instructions extends PositionComponent with HasGameRef<Agent001Game> {
         position: gameRef.size / 2,
         anchor: Anchor.center,
         onReleased: () {
-          gameRef.router.pushNamed('gameplay');
+          gameRef.router.pop();
         },
       ),
     );
+
+    add(
+      NineTileBoxComponent(
+        nineTileBox: NineTileBox(gameRef.getSprite(SpriteIds.dialog)!),
+        position: closeButton.position,
+        size: closeButton.size,
+        anchor: Anchor.center,
+      ),
+    );
+
     return super.onLoad();
   }
 }

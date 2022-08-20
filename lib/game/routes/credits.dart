@@ -1,8 +1,7 @@
 import 'package:agent_001/game/game.dart';
+import 'package:agent_001/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Credits extends PositionComponent with HasGameRef<Agent001Game> {
   Credits({
@@ -17,15 +16,16 @@ class Credits extends PositionComponent with HasGameRef<Agent001Game> {
     positionType = PositionType.viewport;
   }
 
+  late ButtonComponent closeButton;
+
   @override
-  Future<void>? onLoad() {
+  Future<void>? onLoad() async {
     add(
-      ButtonComponent(
+      closeButton = ButtonComponent(
         button: TextBoxComponent(
-          textRenderer: TextPaint(
-            style: GoogleFonts.pressStart2p(color: Colors.white),
-          ),
-          text: 'Play',
+          textRenderer: pixelFont,
+          text:
+              'Credit goes to @DevKage (1000%) and a bit to Munsterlander.  Music by the wife of Munsterlander.  Google Font by CodeMan38.',
           boxConfig: TextBoxConfig(
             growingBox: true,
           ),
@@ -34,10 +34,20 @@ class Credits extends PositionComponent with HasGameRef<Agent001Game> {
         position: gameRef.size / 2,
         anchor: Anchor.center,
         onReleased: () {
-          gameRef.router.pushNamed('gameplay');
+          gameRef.router.pop();
         },
       ),
     );
+
+    add(
+      NineTileBoxComponent(
+        nineTileBox: NineTileBox(gameRef.getSprite(SpriteIds.dialog)!),
+        position: closeButton.position,
+        size: closeButton.size,
+        anchor: Anchor.center,
+      ),
+    );
+
     return super.onLoad();
   }
 }

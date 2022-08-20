@@ -70,6 +70,13 @@ class Agent001Game extends FlameGame
       ),
     );
 
+    _spritesMap.addAll(
+      await MiniLibrary.fromDataString(nineTB).toSprites(
+        color: Colors.white,
+        pixelSize: 1,
+      ),
+    );
+
     router = RouterComponent(
       initialRoute: 'home',
       routes: {

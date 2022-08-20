@@ -27,4 +27,6 @@ class SpriteIds {
   static const String blockLeftRight = 'block_left_right';
   static const String door = 'door';
   static const String key = 'key';
+  static const String dialog = 'dialog';
+  static const String button = 'button';
 }
