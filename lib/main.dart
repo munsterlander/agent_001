@@ -32,7 +32,7 @@ class InvertMe extends FlameGame {
             List<Sprite> spriteList = [];
             for (int i = 1; i <= animationLength; i++) {
               final spriteName = '${information[0]}_${information[1]}_$i';
-              spriteList.add(sprites[spriteName]);
+              spriteList.add(sprites[spriteName]!);
             }
 
             final animation = SpriteAnimation.spriteList(spriteList,
