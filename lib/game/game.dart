@@ -1,5 +1,8 @@
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/routes/main_menu.dart';
+import 'package:agent_001/game/routes/settings_menu.dart';
+import 'package:agent_001/game/routes/credits.dart';
+import 'package:agent_001/game/routes/instructions.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -71,6 +74,9 @@ class Agent001Game extends FlameGame
       initialRoute: 'home',
       routes: {
         'home': Route(MainMenu.new),
+        'settings': Route(SettingsMenu.new),
+        'credits': Route(Credits.new),
+        'instructions': Route(Instructions.new),
         'gameplay': Route(
           () => Level(levelData: getLevelData(0)!),
         ),

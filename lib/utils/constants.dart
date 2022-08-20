@@ -1,4 +1,12 @@
+import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 const double gridSize = 22;
+
+final pixelFont = TextPaint(
+  style: GoogleFonts.pressStart2p(color: Colors.white),
+);
 
 class SpriteIds {
   static const String playerStand = 'player_stand';
