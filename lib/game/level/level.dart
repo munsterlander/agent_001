@@ -43,18 +43,18 @@ class Level extends Component with HasGameRef<InvertMe> {
                     .loadSpriteAnimationFromDataString(playerWalkAnimation),
               };
 
-              add(
-                Player(
-                  animations: playerAnimationStateMap,
-                  current: PlayerState.walk,
-                  size: Vector2.all(32),
-                  anchor: Anchor.center,
-                  position: Vector2(
-                    objectData.key.x * gridSize,
-                    objectData.key.y * gridSize,
-                  ),
+              final playerComponent = Player(
+                animations: playerAnimationStateMap,
+                current: PlayerState.walk,
+                size: Vector2.all(32),
+                anchor: Anchor.center,
+                position: Vector2(
+                  objectData.key.x * gridSize,
+                  objectData.key.y * gridSize,
                 ),
               );
+              add(playerComponent);
+              gameRef.camera.followComponent(playerComponent);
             } else if (data.value == ObjectType.enemy.name) {}
             break;
           default:
