@@ -16,7 +16,7 @@ class Level extends Component with HasGameRef<Agent001Game> {
 
   @override
   Future<void>? onLoad() async {
-    final map = MiniMap.fromDataString(level1Map);
+    final map = MiniMap.fromDataString(level2Map);
 
     final playerAnimationStateMap = {
       PlayerState.idle: await gameRef.loadSpriteAnimationFromDataString(player),
