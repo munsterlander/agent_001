@@ -1,3 +1,4 @@
+import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/routes/main_menu.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:flame/components.dart';
@@ -20,13 +21,15 @@ class Agent001Game extends FlameGame
         PanDetector,
         HasTappables {
   final _spritesMap = <String, Sprite>{};
-  final levelDataList = const [
+  final _levelDataList = const [
     LevelData(
       levelString: level1Map,
       levelName: 'Level 1',
       width: 15,
       height: 10,
       gridSize: gridSize,
+      initialState: DoorState.unlocked,
+      levelIndex: 0,
     ),
     LevelData(
       levelString: level2Map,
@@ -34,6 +37,7 @@ class Agent001Game extends FlameGame
       width: 24,
       height: 16,
       gridSize: gridSize,
+      levelIndex: 1,
     ),
   ];
 
@@ -68,7 +72,7 @@ class Agent001Game extends FlameGame
       routes: {
         'home': Route(MainMenu.new),
         'gameplay': Route(
-          () => Level(levelData: levelDataList[1]),
+          () => Level(levelData: getLevelData(0)!),
         ),
       },
     );
@@ -86,5 +90,12 @@ class Agent001Game extends FlameGame
 
   Sprite? getSprite(String spriteId) {
     return _spritesMap[spriteId];
+  }
+
+  LevelData? getLevelData(int levelId) {
+    if (_levelDataList.length > levelId) {
+      return _levelDataList.elementAt(levelId);
+    }
+    return null;
   }
 }
