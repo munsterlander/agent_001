@@ -2,7 +2,6 @@ import 'package:agent_001/game/actors/bullet.dart';
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/level/wall_block.dart';
-import 'package:agent_001/utils/mouse_click_detector.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -18,15 +17,31 @@ class Player extends PositionComponent
         KeyboardHandler,
         CollisionCallbacks,
         MouseMovementDetectorAwareComponent,
-        MouseClickDetector,
         HasGameRef<Agent001Game> {
   final SpriteAnimationGroupComponent<PlayerState> _animationGroupComponent;
   late CircleHitbox _circleHitbox;
 
   Vector2 moveDirection = Vector2.zero();
   double speed = 100;
+
   bool _firing = false;
-  final _fireRateTimer = Timer(1, autoStart: false, repeat: true);
+  set firing(bool value) {
+    _firing = value;
+
+    if (_firing) {
+      if (!_fireRateTimer.isRunning()) {
+        _animationGroupComponent.current = PlayerState.shoot;
+        fire();
+        _fireRateTimer.onTick = fire;
+        _fireRateTimer.start();
+      }
+    } else {
+      _fireRateTimer.onTick = null;
+      _fireRateTimer.stop();
+    }
+  }
+
+  final _fireRateTimer = Timer(0.5, autoStart: false, repeat: true);
 
   Player({
     Map<PlayerState, SpriteAnimation>? animations,
@@ -103,6 +118,8 @@ class Player extends PositionComponent
         ? 1
         : 0;
 
+    firing = keysPressed.contains(LogicalKeyboardKey.space);
+
     moveDirection.normalize();
 
     return true;
@@ -133,33 +150,7 @@ class Player extends PositionComponent
     super.onCollision(intersectionPoints, other);
   }
 
-  @override
-  bool onMouseClickDown(DragDownInfo info) {
-    fire();
-    _firing = true;
-    _fireRateTimer.onTick = fire;
-    _fireRateTimer.start();
-    return true;
-  }
-
-  @override
-  bool onMouseClickUp(DragEndInfo info) {
-    _firing = false;
-    _fireRateTimer.onTick = null;
-    _fireRateTimer.reset();
-    return true;
-  }
-
-  @override
-  bool onMouseClickCancel() {
-    _firing = false;
-    _fireRateTimer.onTick = null;
-    _fireRateTimer.reset();
-    return true;
-  }
-
   void fire() {
-    _animationGroupComponent.current = PlayerState.shoot;
     final dir = Vector2(0, -1)..rotate(absoluteAngle);
     gameRef.add(
       Bullet(
