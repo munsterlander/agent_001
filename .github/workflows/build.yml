@@ -1,0 +1,30 @@
+# This workflow is triggered on commits to main branch.
+name: Agent-001 - Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    # This job will run on ubuntu virtual machine
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter config --enable-web
+
+      # Statically analyze the Dart code for any errors.
+      - run: flutter analyze .
+
+      # Build for web.
+      - run: flutter build web --web-renderer=canvaskit --release --null-assertions --native-null-assertions
+
+      # Upload generated zip to the artifacts.
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Agent-001-web
+          path: build/web/
