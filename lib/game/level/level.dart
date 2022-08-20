@@ -8,6 +8,7 @@ import '../../assets/assets.dart';
 import '../../utils/constants.dart';
 import '../actors/player.dart';
 import '../game.dart';
+import 'follow_cam.dart';
 import 'wall_block.dart';
 
 class Level extends Component with HasGameRef<Agent001> {
@@ -52,7 +53,14 @@ class Level extends Component with HasGameRef<Agent001> {
                       ),
                     );
                     add(playerComponent);
-                    gameRef.camera.followComponent(playerComponent);
+
+                    final followCam = FollowCam(
+                      target: playerComponent,
+                      deadZoneRadius: 10,
+                      smoothingSpeed: playerComponent.speed,
+                    );
+                    add(followCam);
+                    gameRef.camera.followComponent(followCam);
                     break;
                   }
                 case SpriteIds.block:

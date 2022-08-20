@@ -10,7 +10,11 @@ import '../utils/move_movement_detector.dart';
 import 'level/level.dart';
 
 class Agent001 extends FlameGame
-    with HasKeyboardHandlerComponents, MouseMovementDetector, TapDetector {
+    with
+        HasCollisionDetection,
+        HasKeyboardHandlerComponents,
+        MouseMovementDetector,
+        TapDetector {
   final _spritesMap = <String, Sprite>{};
 
   @override

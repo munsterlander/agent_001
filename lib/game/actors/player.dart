@@ -1,3 +1,6 @@
+import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/game/level/wall_block.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/rendering.dart';
@@ -8,8 +11,13 @@ import '../../utils/move_movement_detector.dart';
 enum PlayerState { idle, shoot, walk }
 
 class Player extends PositionComponent
-    with KeyboardHandler, MouseMovementDetectorAwareComponent {
+    with
+        KeyboardHandler,
+        MouseMovementDetectorAwareComponent,
+        CollisionCallbacks {
   final SpriteAnimationGroupComponent<PlayerState> _animationGroupComponent;
+  late CircleHitbox _circleHitbox;
+
   Vector2 moveDirection = Vector2.zero();
   double speed = 100;
 
@@ -34,6 +42,19 @@ class Player extends PositionComponent
           position: Vector2(0, -size!.y / 4),
         ) {
     add(_animationGroupComponent);
+  }
+
+  @override
+  Future<void>? onLoad() {
+    add(
+      _circleHitbox = CircleHitbox.relative(
+        1,
+        parentSize: size / 1.5,
+        anchor: Anchor.center,
+        position: size / 2,
+      )..collisionType = CollisionType.active,
+    );
+    return super.onLoad();
   }
 
   @override
@@ -78,5 +99,24 @@ class Player extends PositionComponent
   bool onMouseMove(PointerHoverInfo info) {
     angle = Vector2(0, -1).angleToSigned(info.eventPosition.game - position);
     return true;
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is WallBlock ||
+        (other is Door && other.state == DoorState.locked)) {
+      if (intersectionPoints.length == 2) {
+        final midPoint = (intersectionPoints.elementAt(0) +
+                intersectionPoints.elementAt(1)) /
+            2;
+
+        final collisionNormal = (_circleHitbox.absoluteCenter - midPoint);
+
+        position += collisionNormal
+            .normalized()
+            .scaled(_circleHitbox.radius - collisionNormal.length);
+      }
+    }
+    super.onCollision(intersectionPoints, other);
   }
 }
