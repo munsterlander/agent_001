@@ -1,6 +1,6 @@
 {
-    "name": "invert_me",
-    "short_name": "invert_me",
+    "name": "agent_001",
+    "short_name": "agent_001",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

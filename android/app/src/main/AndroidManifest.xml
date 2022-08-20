@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.babybamboostudios.invert_me.invert_me">
+    package="com.babybamboostudios.agent_001.agent_001">
    <application
-        android:label="invert_me"
+        android:label="agent_001"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
