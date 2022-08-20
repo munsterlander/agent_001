@@ -13,7 +13,7 @@ extension ObjectString on ObjectType {
   String get name {
     switch (this) {
       case ObjectType.player:
-        return 'player';
+        return 'player_stand';
       case ObjectType.enemy:
         return 'enemy';
       default:
@@ -37,14 +37,16 @@ class Level extends Component with HasGameRef<InvertMe> {
               final playerAnimationStateMap = {
                 PlayerState.idle:
                     await gameRef.loadSpriteAnimationFromDataString(player),
-                PlayerState.shooting: await gameRef
-                    .loadSpriteAnimationFromDataString(shootAnimation),
+                PlayerState.shoot: await gameRef
+                    .loadSpriteAnimationFromDataString(playerShootAnimation),
+                PlayerState.walk: await gameRef
+                    .loadSpriteAnimationFromDataString(playerWalkAnimation),
               };
 
               add(
                 Player(
                   animations: playerAnimationStateMap,
-                  current: PlayerState.shooting,
+                  current: PlayerState.walk,
                   size: Vector2.all(32),
                   position: Vector2(
                     objectData.key.x * gridSize,
