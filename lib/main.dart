@@ -1,12 +1,12 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
-import 'game/invert_me.dart';
+import 'game/game.dart';
 
 void main() {
   runApp(
-    GameWidget<InvertMe>(
-      game: InvertMe(),
+    GameWidget<Agent001>(
+      game: Agent001(),
     ),
   );
 }

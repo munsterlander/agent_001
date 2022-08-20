@@ -1,5 +1,5 @@
-name: invert_me
-description: A simple Flame game.
+name: agent_001
+description: A top down shooter game about Agent-001.
 version: 0.1.0
 
 publish_to: "none"

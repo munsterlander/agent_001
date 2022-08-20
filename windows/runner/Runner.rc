@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.babybamboostudios.invert_me" "\0"
-            VALUE "FileDescription", "invert_me" "\0"
+            VALUE "CompanyName", "com.babybamboostudios.agent_001" "\0"
+            VALUE "FileDescription", "Agent-001" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "invert_me" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.babybamboostudios.invert_me. All rights reserved." "\0"
-            VALUE "OriginalFilename", "invert_me.exe" "\0"
-            VALUE "ProductName", "invert_me" "\0"
+            VALUE "InternalName", "Agent-001" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.babybamboostudios.agent_001. All rights reserved." "\0"
+            VALUE "OriginalFilename", "Agent-001.exe" "\0"
+            VALUE "ProductName", "Agent-001" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,16 +1,10 @@
-# invert_me
+# Agent-001
 
-A new Flutter project.
+A top down shooter game about Agent-001.
 
-## Getting Started
+## About
 
-This project is a starting point for a Flutter application.
+This repository hosts source code for [Agent-001](https://ufrshubham.itch.io/agent-001), a game that we created for the [Midyear 2022 Flame Game Jam](https://itch.io/jam/2nd-flame-game-jam)
 
-A few resources to get you started if this is your first Flutter project:
+## How to play
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

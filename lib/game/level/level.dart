@@ -1,16 +1,16 @@
+import 'package:agent_001/utils/minisprite_ext.dart';
 import 'package:flame/components.dart';
 import 'package:flame_mini_sprite/flame_mini_sprite.dart';
 import 'package:flutter/material.dart';
-import 'package:invert_me/assets/assets.dart';
-import 'package:invert_me/game/actors/player.dart';
-import 'package:invert_me/game/invert_me.dart';
-import 'package:invert_me/utils/constants.dart';
-import 'package:invert_me/utils/minisprite_ext.dart';
 import 'package:mini_sprite/mini_sprite.dart';
 
+import '../../assets/assets.dart';
+import '../../utils/constants.dart';
+import '../actors/player.dart';
+import '../game.dart';
 import 'wall_block.dart';
 
-class Level extends Component with HasGameRef<InvertMe> {
+class Level extends Component with HasGameRef<Agent001> {
   Level({Iterable<Component>? children, int? priority});
 
   @override
