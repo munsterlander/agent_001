@@ -31,8 +31,8 @@ class MainMenu extends PositionComponent with HasGameRef<Agent001Game> {
     );
 
     final sprite = sprites['nineTileBox'];
-    final boxSize = Vector2.all(300);
-    final nineTileBox = NineTileBox(sprite!, destTileSize: 148);
+    final boxSize = Vector2.all(100);
+    final nineTileBox = NineTileBox(sprite!, destTileSize: 16);
     add(
       nineTileBoxComponent = NineTileBoxComponent(
         nineTileBox: nineTileBox,
