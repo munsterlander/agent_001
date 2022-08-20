@@ -3,6 +3,7 @@ import 'package:agent_001/game/routes/main_menu.dart';
 import 'package:agent_001/game/routes/settings_menu.dart';
 import 'package:agent_001/game/routes/credits.dart';
 import 'package:agent_001/game/routes/instructions.dart';
+import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -48,6 +49,10 @@ class Agent001Game extends FlameGame
 
   @override
   Future<void> onLoad() async {
+    // Loads all the audio assets
+    await AudioManager.init();
+    //AudioManager.playBgm('bgm.wav');
+
     camera.viewport = FixedResolutionViewport(Vector2(640, 360) / 2);
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(blocks).toSprites(

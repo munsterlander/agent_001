@@ -3,6 +3,7 @@ import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/level/key_component.dart';
 import 'package:agent_001/game/level/wall_block.dart';
+import 'package:agent_001/utils/audio_manager.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -89,6 +90,10 @@ class Player extends PositionComponent
         _animationGroupComponent.current = PlayerState.idle;
       } else {
         _animationGroupComponent.current = PlayerState.walk;
+        //Will likely have to do a pool if we want this to work:
+        //https://github.com/bluefireteam/audioplayers/blob/main/getting_started.md
+        //https://pub.dev/packages/flame_audio/example
+        //AudioManager.playSfx('player_step.wav');
       }
     } else {
       _animationGroupComponent.current = PlayerState.shoot;
@@ -165,6 +170,7 @@ class Player extends PositionComponent
 
   void fire() {
     final dir = Vector2(0, -1)..rotate(absoluteAngle);
+    AudioManager.playSfx('player_shoot.wav');
     gameRef.add(
       Bullet(
         direction: dir,
