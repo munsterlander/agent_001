@@ -1,4 +1,5 @@
 import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/utils/level_data.dart';
 import 'package:agent_001/utils/minisprite_ext.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,23 @@ import 'follow_cam.dart';
 import 'wall_block.dart';
 
 class Level extends Component with HasGameRef<Agent001Game> {
-  Level({Iterable<Component>? children, int? priority});
+  final LevelData levelData;
+
+  Level({
+    required this.levelData,
+    Iterable<Component>? children,
+    int? priority,
+  });
 
   @override
   Future<void>? onLoad() async {
-    final map = MiniMap.fromDataString(level2Map);
+    final map = MiniMap.fromDataString(levelData.levelString);
+    gameRef.camera.worldBounds = Rect.fromLTWH(
+      0,
+      0,
+      levelData.size.x,
+      levelData.size.y,
+    );
 
     final playerAnimationStateMap = {
       PlayerState.idle: await gameRef.loadSpriteAnimationFromDataString(player),

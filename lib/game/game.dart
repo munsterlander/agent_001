@@ -1,4 +1,5 @@
 import 'package:agent_001/game/routes/main_menu.dart';
+import 'package:agent_001/utils/level_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart' show Colors;
 import 'package:mini_sprite/mini_sprite.dart';
 
 import '../assets/assets.dart';
+import '../utils/constants.dart';
 import '../utils/move_movement_detector.dart';
 import 'level/level.dart';
 
@@ -18,6 +20,23 @@ class Agent001Game extends FlameGame
         PanDetector,
         HasTappables {
   final _spritesMap = <String, Sprite>{};
+  final levelDataList = const [
+    LevelData(
+      levelString: level1Map,
+      levelName: 'Level 1',
+      width: 15,
+      height: 10,
+      gridSize: gridSize,
+    ),
+    LevelData(
+      levelString: level2Map,
+      levelName: 'Level 2',
+      width: 24,
+      height: 16,
+      gridSize: gridSize,
+    ),
+  ];
+
   late final RouterComponent router;
 
   @override
@@ -41,7 +60,9 @@ class Agent001Game extends FlameGame
       initialRoute: 'home',
       routes: {
         'home': Route(MainMenu.new),
-        'gameplay': Route(Level.new),
+        'gameplay': Route(
+          () => Level(levelData: levelDataList[1]),
+        ),
       },
     );
     add(router);
