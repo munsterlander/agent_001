@@ -11,7 +11,7 @@ import '../game.dart';
 import 'follow_cam.dart';
 import 'wall_block.dart';
 
-class Level extends Component with HasGameRef<Agent001> {
+class Level extends Component with HasGameRef<Agent001Game> {
   Level({Iterable<Component>? children, int? priority});
 
   @override

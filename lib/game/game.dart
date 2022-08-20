@@ -1,22 +1,25 @@
+import 'package:agent_001/game/routes/main_menu.dart';
 import 'package:agent_001/utils/mouse_click_detector.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_mini_sprite/flame_mini_sprite.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show Colors;
 import 'package:mini_sprite/mini_sprite.dart';
 
 import '../assets/assets.dart';
 import '../utils/move_movement_detector.dart';
 import 'level/level.dart';
 
-class Agent001 extends FlameGame
+class Agent001Game extends FlameGame
     with
         HasCollisionDetection,
         HasKeyboardHandlerComponents,
         MouseMovementDetector,
-        PanDetector {
+        PanDetector,
+        HasTappables {
   final _spritesMap = <String, Sprite>{};
+  late final RouterComponent router;
 
   @override
   Future<void> onLoad() async {
@@ -35,7 +38,16 @@ class Agent001 extends FlameGame
       ),
     );
 
-    add(Level());
+    router = RouterComponent(
+      initialRoute: 'home',
+      routes: {
+        'home': Route(MainMenu.new),
+        'gameplay': Route(Level.new),
+      },
+    );
+    add(router);
+
+    //add(Level());
   }
 
   @override
