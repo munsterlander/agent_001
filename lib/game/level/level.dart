@@ -10,6 +10,7 @@ import '../../utils/constants.dart';
 import '../actors/player.dart';
 import '../game.dart';
 import 'follow_cam.dart';
+import 'key_component.dart';
 import 'wall_block.dart';
 
 class Level extends Component with HasGameRef<Agent001Game> {
@@ -115,6 +116,20 @@ class Level extends Component with HasGameRef<Agent001Game> {
                           objectData.key.y * gridSize,
                         ),
                         size: Vector2.all(gridSize),
+                      ),
+                    );
+                    break;
+                  }
+                case SpriteIds.key:
+                  {
+                    add(
+                      KeyComponent(
+                        sprite: gameRef.getSprite(data.value)!,
+                        position: Vector2(
+                          objectData.key.x * gridSize,
+                          objectData.key.y * gridSize,
+                        ),
+                        size: Vector2.all(gridSize) / 2,
                       ),
                     );
                     break;

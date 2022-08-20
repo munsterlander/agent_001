@@ -1,6 +1,8 @@
+import 'package:agent_001/assets/assets.dart';
 import 'package:agent_001/game/actors/bullet.dart';
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/game/level/key_component.dart';
 import 'package:agent_001/game/level/wall_block.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -23,6 +25,8 @@ class Player extends PositionComponent
 
   Vector2 moveDirection = Vector2.zero();
   double speed = 100;
+
+  int keyCount = 0;
 
   bool _firing = false;
   set firing(bool value) {
@@ -134,7 +138,7 @@ class Player extends PositionComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is WallBlock ||
-        (other is Door && other.state == DoorState.locked)) {
+        (other is Door && other.state == DoorState.locked && keyCount == 0)) {
       if (intersectionPoints.length == 2) {
         final midPoint = (intersectionPoints.elementAt(0) +
                 intersectionPoints.elementAt(1)) /
@@ -146,6 +150,14 @@ class Player extends PositionComponent
             .normalized()
             .scaled(_circleHitbox.radius - collisionNormal.length);
       }
+    } else if (other is Door &&
+        other.state == DoorState.locked &&
+        keyCount > 0) {
+      --keyCount;
+      other.state = DoorState.unlocked;
+    } else if (other is KeyComponent) {
+      ++keyCount;
+      other.collect();
     }
     super.onCollision(intersectionPoints, other);
   }
