@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
 class WallBlock extends SpriteComponent {
@@ -12,4 +13,10 @@ class WallBlock extends SpriteComponent {
     super.children,
     super.priority,
   });
+
+  @override
+  Future<void>? onLoad() {
+    add(RectangleHitbox()..collisionType = CollisionType.passive);
+    return super.onLoad();
+  }
 }
