@@ -5,8 +5,8 @@ import 'game/game.dart';
 
 void main() {
   runApp(
-    GameWidget<Agent001>(
-      game: Agent001(),
+    GameWidget<Agent001Game>(
+      game: Agent001Game(),
     ),
   );
 }

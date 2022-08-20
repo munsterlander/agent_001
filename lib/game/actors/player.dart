@@ -19,7 +19,7 @@ class Player extends PositionComponent
         CollisionCallbacks,
         MouseMovementDetectorAwareComponent,
         MouseClickDetector,
-        HasGameRef<Agent001> {
+        HasGameRef<Agent001Game> {
   final SpriteAnimationGroupComponent<PlayerState> _animationGroupComponent;
   late CircleHitbox _circleHitbox;
 
