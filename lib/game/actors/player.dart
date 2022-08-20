@@ -1,4 +1,3 @@
-import 'package:agent_001/assets/assets.dart';
 import 'package:agent_001/game/actors/bullet.dart';
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/level/door.dart';
