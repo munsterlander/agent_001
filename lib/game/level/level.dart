@@ -48,6 +48,7 @@ class Level extends Component with HasGameRef<InvertMe> {
                   animations: playerAnimationStateMap,
                   current: PlayerState.walk,
                   size: Vector2.all(32),
+                  anchor: Anchor.center,
                   position: Vector2(
                     objectData.key.x * gridSize,
                     objectData.key.y * gridSize,
