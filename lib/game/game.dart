@@ -1,5 +1,4 @@
 import 'package:agent_001/game/routes/main_menu.dart';
-import 'package:agent_001/utils/mouse_click_detector.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -59,26 +58,5 @@ class Agent001Game extends FlameGame
 
   Sprite? getSprite(String spriteId) {
     return _spritesMap[spriteId];
-  }
-
-  @override
-  void onPanDown(DragDownInfo info) {
-    propagateToChildren<MouseClickDetector>(
-      (p0) => p0.onMouseClickDown(info),
-    );
-  }
-
-  @override
-  void onPanEnd(DragEndInfo info) {
-    propagateToChildren<MouseClickDetector>(
-      (p0) => p0.onMouseClickUp(info),
-    );
-  }
-
-  @override
-  void onPanCancel() {
-    propagateToChildren<MouseClickDetector>(
-      (p0) => p0.onMouseClickCancel(),
-    );
   }
 }
