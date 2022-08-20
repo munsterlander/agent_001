@@ -116,6 +116,15 @@ class Level extends Component with HasGameRef<Agent001Game> {
                           objectData.key.y * gridSize,
                         ),
                         size: Vector2.all(gridSize),
+                        initialState: levelData.initialState,
+                        onDoorOpen: () {
+                          final nextLevelData =
+                              gameRef.getLevelData(levelData.levelIndex + 1);
+                          if (nextLevelData != null) {
+                            parent?.add(Level(levelData: nextLevelData));
+                          }
+                          removeFromParent();
+                        },
                       ),
                     );
                     break;

@@ -10,7 +10,11 @@ enum DoorState {
 }
 
 class Door extends SpriteComponent with CollisionCallbacks {
+  final void Function() onDoorOpen;
+
   Door({
+    required this.onDoorOpen,
+    DoorState initialState = DoorState.locked,
     super.sprite,
     super.paint,
     super.position,
@@ -20,21 +24,15 @@ class Door extends SpriteComponent with CollisionCallbacks {
     super.anchor,
     super.children,
     super.priority,
-  });
+  }) : _state = initialState;
 
   late ShapeHitbox hitbox;
   DoorState _state = DoorState.locked;
 
   DoorState get state => _state;
   set state(DoorState value) {
-    if (_state != value && value == DoorState.unlocked) {
-      hitbox.collisionType = CollisionType.inactive;
-      add(
-        OpacityEffect.fadeOut(
-          LinearEffectController(0.5),
-          onComplete: () => removeFromParent(),
-        ),
-      );
+    if ((_state != value && value == DoorState.unlocked)) {
+      open();
     }
     _state = value;
   }
@@ -67,5 +65,18 @@ class Door extends SpriteComponent with CollisionCallbacks {
       );
     }
     super.onCollisionStart(intersectionPoints, other);
+  }
+
+  void open() {
+    hitbox.collisionType = CollisionType.inactive;
+    add(
+      OpacityEffect.fadeOut(
+        LinearEffectController(0.5),
+        onComplete: () {
+          onDoorOpen.call();
+          removeFromParent();
+        },
+      ),
+    );
   }
 }

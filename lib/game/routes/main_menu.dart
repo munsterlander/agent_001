@@ -1,6 +1,7 @@
 import 'package:agent_001/game/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainMenu extends PositionComponent with HasGameRef<Agent001Game> {
   MainMenu({
@@ -20,10 +21,14 @@ class MainMenu extends PositionComponent with HasGameRef<Agent001Game> {
     add(
       ButtonComponent(
         button: TextBoxComponent(
+          textRenderer: TextPaint(
+            style: GoogleFonts.pressStart2p(),
+          ),
           text: 'Play',
           boxConfig: TextBoxConfig(
             growingBox: true,
           ),
+          pixelRatio: 100,
         ),
         position: gameRef.size / 2,
         anchor: Anchor.center,

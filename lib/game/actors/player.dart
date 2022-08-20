@@ -149,11 +149,13 @@ class Player extends PositionComponent
             .normalized()
             .scaled(_circleHitbox.radius - collisionNormal.length);
       }
-    } else if (other is Door &&
-        other.state == DoorState.locked &&
-        keyCount > 0) {
-      --keyCount;
-      other.state = DoorState.unlocked;
+    } else if (other is Door) {
+      if (other.state == DoorState.locked && keyCount > 0) {
+        --keyCount;
+        other.state = DoorState.unlocked;
+      } else if (other.state == DoorState.unlocked) {
+        other.open();
+      }
     } else if (other is KeyComponent) {
       ++keyCount;
       other.collect();
