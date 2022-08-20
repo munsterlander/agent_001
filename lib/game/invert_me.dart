@@ -1,55 +1,10 @@
-import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame_mini_sprite/flame_mini_sprite.dart';
-import 'package:flutter/material.dart';
-import 'package:invert_me/assets/assets.dart';
-import 'package:mini_sprite/mini_sprite.dart';
+import 'package:invert_me/game/level/level.dart';
 
 class InvertMe extends FlameGame {
   @override
   Future<void> onLoad() async {
-    final miniLibrary = MiniLibrary.fromDataString(characterAnimation);
-    final sprites = await miniLibrary.toSprites(
-      color: Colors.white,
-      pixelSize: 1,
-    );
-
-    final miniMap = MiniMap.fromDataString(animationMap);
-    for (final entry in miniMap.objects.entries) {
-      final sprite = sprites[entry.value['sprite']];
-      if (sprite != null) {
-        final information = entry.value['sprite'].split('_');
-        switch (information[0].toString()) {
-          case 'character':
-            final int animationLength = int.parse(information[1]);
-            List<Sprite> spriteList = [];
-            for (int i = 1; i <= animationLength; i++) {
-              final spriteName = '${information[0]}_${information[1]}_$i';
-              spriteList.add(sprites[spriteName]!);
-            }
-
-            final animation = SpriteAnimation.spriteList(spriteList,
-                stepTime: .2, loop: true);
-
-            add(
-              SpriteAnimationComponent(
-                animation: animation,
-                position: Vector2(
-                  (entry.key.x * 8).toDouble(),
-                  (entry.key.y * 8).toDouble(),
-                ),
-                size: Vector2(
-                  sprite.image.width.toDouble(),
-                  sprite.image.height.toDouble(),
-                ),
-              ),
-            );
-            break;
-        }
-      }
-    }
-
-    camera.zoom = 4;
-    camera.snapTo(-size / 2);
+    camera.viewport = FixedResolutionViewport(Vector2(640, 360));
+    add(Level());
   }
 }
