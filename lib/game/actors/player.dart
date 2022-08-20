@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
 
-enum PlayerState { idle, shooting }
+enum PlayerState { idle, shoot, walk }
 
 class Player extends SpriteAnimationGroupComponent<PlayerState> {
   Player({
