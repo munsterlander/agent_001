@@ -29,7 +29,6 @@ flutter:
     - family: PressStartP2
       fonts:
         - asset: assets/fonts/PressStart2P-Regular.ttf
-          weight: 700
 
 flutter_native_splash:
   color: "#ffffff"

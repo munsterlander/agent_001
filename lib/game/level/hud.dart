@@ -25,6 +25,7 @@ class Hud extends PositionComponent with HasGameRef<Agent001Game> {
     _healthTextComponent.textRenderer = TextPaint(
       style: const TextStyle(
         fontFamily: 'PressStartP2',
+        color: whiteTextColor,
         fontSize: 10,
       ),
     );

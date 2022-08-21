@@ -188,7 +188,7 @@ class Player extends PositionComponent
           gameRef.camera.shake(duration: 0.1, intensity: 1);
           gameRef.playerData.health.value -= 5;
           if (gameRef.playerData.health.value == 0) {
-            parent.displayRetryOptions();
+            // parent.displayRetryOptions();
           }
         } else {
           _circleHitbox.collisionType = CollisionType.inactive;
