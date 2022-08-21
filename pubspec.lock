@@ -298,6 +298,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0"
+  pixel_border:
+    dependency: "direct main"
+    description:
+      name: pixel_border
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0-nullsafety.1"
   platform:
     dependency: transitive
     description:

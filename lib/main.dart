@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:pixel_border/pixel_border.dart';
 
 import 'game/game.dart';
 
@@ -29,10 +30,18 @@ class Agent001GameApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Agent 001 Bit',
-      /* theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ), */
+      theme: ThemeData(
+        buttonTheme: ButtonThemeData(
+          shape: PixelBorder.solid(
+            pixelSize: 2.0,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(8.0),
+              bottomRight: Radius.circular(16.0),
+            ),
+            color: Colors.purple,
+          ),
+        ),
+      ),
       home: Scaffold(
         body: GameWidget<Agent001Game>(
           game: _agent001Game,
