@@ -28,6 +28,7 @@ class Enemy extends PositionComponent {
     add(_animationGroupComponent);
   }
 
+  // ignore: unused_field
   late CircleHitbox _circleHitbox;
   final SpriteAnimationGroupComponent<EnemyState> _animationGroupComponent;
 
