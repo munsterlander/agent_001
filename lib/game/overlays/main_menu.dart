@@ -14,26 +14,24 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: SizedBox(
         width: 500,
         height: 500,
         child: DecoratedBox(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/dialog.png'),
               fit: BoxFit.cover,
             ),
           ),
-          child:
-              null /* ImageTextButton(
+          child: ImageTextButton(
             cardText: 'Agent 001',
             buttonText: 'Play',
             onPressed: () {
-              Level(levelData: getLevelData(0)!)
+              Level(levelData: gameRef.getLevelData(0)!);
             },
-          ) */
-          ,
+          ),
         ),
       ),
     );
