@@ -1,8 +1,7 @@
 import 'package:agent_001/game/game.dart';
+import 'package:agent_001/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SettingsMenu extends PositionComponent with HasGameRef<Agent001Game> {
   SettingsMenu({
@@ -17,15 +16,16 @@ class SettingsMenu extends PositionComponent with HasGameRef<Agent001Game> {
     positionType = PositionType.viewport;
   }
 
+  late ButtonComponent closeButton;
+  late ButtonComponent instructionsButton;
+
   @override
-  Future<void>? onLoad() {
+  Future<void>? onLoad() async {
     add(
-      ButtonComponent(
+      closeButton = ButtonComponent(
         button: TextBoxComponent(
-          textRenderer: TextPaint(
-            style: GoogleFonts.pressStart2p(color: Colors.white),
-          ),
-          text: 'Play',
+          textRenderer: pixelFont,
+          text: 'Close',
           boxConfig: TextBoxConfig(
             growingBox: true,
           ),
@@ -34,10 +34,42 @@ class SettingsMenu extends PositionComponent with HasGameRef<Agent001Game> {
         position: gameRef.size / 2,
         anchor: Anchor.center,
         onReleased: () {
-          gameRef.router.pushNamed('gameplay');
+          gameRef.router.pop();
         },
       ),
     );
+
+    add(
+      TextBoxComponent(
+        textRenderer: pixelFont,
+        text: 'Agent 001',
+        boxConfig: TextBoxConfig(
+          growingBox: true,
+        ),
+        pixelRatio: 100,
+        position:
+            Vector2(closeButton.position.x / 2, closeButton.position.y / 2),
+      ),
+    );
+
+    add(
+      NineTileBoxComponent(
+        nineTileBox: NineTileBox(gameRef.getSprite(SpriteIds.button)!),
+        position: closeButton.position,
+        size: closeButton.size,
+        anchor: Anchor.center,
+      ),
+    );
+
+    add(
+      NineTileBoxComponent(
+        nineTileBox: NineTileBox(gameRef.getSprite(SpriteIds.dialog)!),
+        position: closeButton.position,
+        size: closeButton.size * 4,
+        anchor: Anchor.center,
+      ),
+    );
+
     return super.onLoad();
   }
 }

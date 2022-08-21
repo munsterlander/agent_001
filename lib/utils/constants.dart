@@ -29,4 +29,6 @@ class SpriteIds {
   static const String key = 'key';
   static const String dialog = 'dialog';
   static const String button = 'button';
+  static const String toggleOff = 'off';
+  static const String toggleOn = 'on';
 }
