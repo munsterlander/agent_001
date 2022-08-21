@@ -198,13 +198,13 @@ body {
 
 /* Bond Image */
 #bond {
-  padding: 60px 95px 60px 115px;
+  padding: 60px 60px 40px 60px;
   left: 50%;
   top: 50%;
   width: 90px;
-  height: 180px;
-  margin-top: -150px;
-  margin-left: -150px;
+  height: 108px;
+  margin-top: -120px;
+  margin-left: -100px;
   position: absolute;
   opacity: 0;
   border-radius: 50%;
