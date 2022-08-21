@@ -12,9 +12,11 @@ import 'bullet.dart';
 
 enum EnemyState { idle, shoot, walk }
 
-class Enemy extends PositionComponent with HasGameRef<Agent001Game> {
+class Enemy extends PositionComponent
+    with HasGameRef<Agent001Game>, CollisionCallbacks {
   final double range = 150;
   final KeyComponent? keyComponent;
+  double health = 100;
 
   Enemy({
     required Vector2 targetPosition,
@@ -120,46 +122,76 @@ class Enemy extends PositionComponent with HasGameRef<Agent001Game> {
 
   @override
   void update(double dt) {
-    if (isPlayerInRange) {
-      final relVec = (player!.absolutePosition - absolutePosition);
-      if (relVec.length < range) {
-        final forwardVec = Vector2(0, -1)..rotate(angle);
-        relVec.normalize();
-        if (forwardVec.dot(relVec) > 0.6) {
-          final result = gameRef.collisionDetection
-              .raycast(Ray2(origin: absoluteCenter, direction: relVec));
-          if (result != null &&
-              result.hitbox != null &&
-              result.hitbox!.parent! is Player) {
-            firing = true;
+    if (health > 0) {
+      if (isPlayerInRange) {
+        final relVec = (player!.absolutePosition - absolutePosition);
+        if (relVec.length < range) {
+          final forwardVec = Vector2(0, -1)..rotate(angle);
+          relVec.normalize();
+          if (forwardVec.dot(relVec) > 0.6) {
+            final result = gameRef.collisionDetection
+                .raycast(Ray2(origin: absoluteCenter, direction: relVec));
+            if (result != null &&
+                result.hitbox != null &&
+                result.hitbox!.parent! is Player) {
+              firing = true;
+            } else {
+              firing = false;
+            }
           } else {
             firing = false;
           }
         } else {
           firing = false;
+          player = null;
         }
-      } else {
-        firing = false;
-        player = null;
       }
-    }
 
-    _fireRateTimer.update(dt);
+      _fireRateTimer.update(dt);
+    }
     super.update(dt);
   }
 
+  @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (health > 0) {
+      if (other is Bullet && other.bulletType == BulletType.player) {
+        if (health > 0) {
+          health -= 25;
+          if (health == 0) {
+            _circleHitbox.collisionType = CollisionType.inactive;
+            _animationGroupComponent.add(
+              OpacityEffect.fadeOut(
+                EffectController(
+                  duration: 0.1,
+                  alternate: true,
+                  repeatCount: 2,
+                ),
+                onComplete: () => die(),
+              ),
+            );
+          }
+        }
+      }
+    }
+    super.onCollisionStart(intersectionPoints, other);
+  }
+
   void fire() {
-    AudioManager.playSfx('enemy_shoot.wav');
-    final dir = player!.absolutePosition - absolutePosition;
-    angle = Vector2(0, -1).angleToSigned(dir);
-    gameRef.add(
-      Bullet(
-        bulletType: BulletType.enemy,
-        direction: dir,
-        size: Vector2(2, 3),
-        position: absoluteCenter,
-      ),
-    );
+    if (player!.isAlive && health > 0) {
+      AudioManager.playSfx('enemy_shoot.wav');
+      final dir = player!.absolutePosition - absolutePosition;
+      angle = Vector2(0, -1).angleToSigned(dir);
+      gameRef.add(
+        Bullet(
+          bulletType: BulletType.enemy,
+          direction: dir,
+          size: Vector2(2, 3),
+          position: absoluteCenter,
+        ),
+      );
+    }
   }
 
   void die() {

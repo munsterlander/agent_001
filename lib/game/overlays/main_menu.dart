@@ -52,7 +52,7 @@ class MainMenu extends StatelessWidget {
                   onPressed: () {
                     gameRef.overlays.remove(id);
                     gameRef.add(
-                      Level(levelData: gameRef.getLevelData(3)!),
+                      Level(levelData: gameRef.getLevelData(0)!),
                     );
                   },
                   style: ElevatedButton.styleFrom(
