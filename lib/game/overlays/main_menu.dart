@@ -25,7 +25,7 @@ class MainMenu extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   gameRef.overlays.remove(id);
-                  Level(levelData: gameRef.getLevelData(0)!);
+                  gameRef.add(Level(levelData: gameRef.getLevelData(0)!));
                 },
                 child: const Text('Play'),
               ),
