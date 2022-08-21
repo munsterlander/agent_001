@@ -1,6 +1,7 @@
 import 'package:agent_001/game/actors/bullet.dart';
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/game/level/health_up.dart';
 import 'package:agent_001/game/level/key_component.dart';
 import 'package:agent_001/game/level/level.dart';
 import 'package:agent_001/game/level/wall_block.dart';
@@ -182,6 +183,10 @@ class Player extends PositionComponent
         }
       } else if (other is KeyComponent) {
         ++keyCount;
+        other.collect();
+      } else if (other is HealthUp) {
+        gameRef.playerData.health.value = gameRef.playerData.health.value
+            .clamp(0, gameRef.playerData.health.value + 25);
         other.collect();
       } else if (other is Bullet && other.bulletType == BulletType.enemy) {
         if (gameRef.playerData.health.value > 0) {
