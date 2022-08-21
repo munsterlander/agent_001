@@ -1,0 +1,1 @@
+flutter build web --release --null-assertions --native-null-assertions --web-renderer canvaskit

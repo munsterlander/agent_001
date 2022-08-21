@@ -15,26 +15,36 @@ import 'follow_cam.dart';
 import 'key_component.dart';
 import 'wall_block.dart';
 
-class Level extends Component with HasGameRef<Agent001Game> {
+class Level extends PositionComponent with HasGameRef<Agent001Game> {
   final LevelData levelData;
   late Map<PlayerState, SpriteAnimation> playerAnimationStateMap;
   late Map<EnemyState, SpriteAnimation> enemyAnimationStateMap;
 
   Level({
     required this.levelData,
-    Iterable<Component>? children,
-    int? priority,
+    super.position,
+    super.size,
+    super.scale,
+    super.angle,
+    super.anchor,
+    super.children,
+    super.priority,
   });
 
   @override
   Future<void>? onLoad() async {
     final map = MiniMap.fromDataString(levelData.levelString);
-    gameRef.camera.worldBounds = Rect.fromLTWH(
-      0,
-      0,
-      levelData.size.x,
-      levelData.size.y,
-    );
+    if (levelData.levelIndex == 0) {
+      gameRef.camera.snapTo(levelData.size / 2);
+    } else {
+      gameRef.camera.resetMovement();
+      gameRef.camera.worldBounds = Rect.fromLTWH(
+        0,
+        0,
+        levelData.size.x,
+        levelData.size.y,
+      );
+    }
 
     playerAnimationStateMap = {
       PlayerState.idle: await gameRef.loadSpriteAnimationFromDataString(player),
@@ -86,6 +96,7 @@ class Level extends Component with HasGameRef<Agent001Game> {
                       smoothingSpeed: playerComponent.speed,
                     );
                     add(followCam);
+
                     gameRef.camera.followComponent(followCam);
                     break;
                   }
@@ -179,7 +190,12 @@ class Level extends Component with HasGameRef<Agent001Game> {
                   }
                 case SpriteIds.enemy:
                   {
+                    final xy = objectData.value['targetPoint'].split(",");
+
                     final enemy = Enemy(
+                      targetPosition:
+                          Vector2(double.parse(xy[0]), double.parse(xy[1])) *
+                              gridSize,
                       animations: enemyAnimationStateMap,
                       current: EnemyState.walk,
                       size: Vector2.all(gridSize),
