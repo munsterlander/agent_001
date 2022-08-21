@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:agent_001/assets/mini_levels.dart';
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/utils/audio_manager.dart';
@@ -58,10 +60,10 @@ class Agent001Game extends FlameGame
     ),
   ];
 
-  late final RouterComponent router;
-
   void initialization() async {
-    await Future.delayed(const Duration(seconds: 13));
+    if (!Platform.isWindows) {
+      await Future.delayed(const Duration(seconds: 13));
+    }
     FlutterNativeSplash.remove();
   }
 
@@ -72,7 +74,7 @@ class Agent001Game extends FlameGame
     await AudioManager.init();
     //AudioManager.playBgm('bgm.wav');
 
-    camera.viewport = FixedResolutionViewport(Vector2(640, 360) / 2);
+    camera.viewport = FixedResolutionViewport(Vector2(640, 360) / 1.5);
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(blocks).toSprites(
         color: Colors.white,

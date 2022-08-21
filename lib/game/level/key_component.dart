@@ -24,6 +24,7 @@ class KeyComponent extends SpriteComponent {
   }
 
   void collect() {
+    //AudioManager.playSfx('');
     hitbox.collisionType = CollisionType.inactive;
     add(
       OpacityEffect.fadeOut(

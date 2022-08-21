@@ -20,8 +20,6 @@ void main() {
   runApp(const Agent001GameApp());
 }
 
-Agent001Game _agent001Game = Agent001Game();
-
 class Agent001GameApp extends StatelessWidget {
   const Agent001GameApp({Key? key}) : super(key: key);
 
@@ -29,7 +27,7 @@ class Agent001GameApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Agent 001 Bit',
+      title: 'Agent 001',
       theme: ThemeData(
         buttonTheme: ButtonThemeData(
           shape: PixelBorder.solid(
@@ -44,16 +42,9 @@ class Agent001GameApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: GameWidget<Agent001Game>(
-          game: _agent001Game,
-          errorBuilder: (context, ex) {
-            debugPrint(ex.toString());
-            return const Center(
-              child: Text('Sorry, something went wrong. Reload Fans'),
-            );
-          },
+          game: Agent001Game(),
           overlayBuilderMap: {
-            MainMenu.id: (_, Agent001Game gameRef) =>
-                MainMenu(gameRef: gameRef),
+            MainMenu.id: (_, gameRef) => MainMenu(gameRef: gameRef),
             //GameOver.id: (_, Agent001Game gameRef) => GameOver(gameRef),
             //Settings.id: (_, Agent001Game gameRef) => Settings(gameRef),
             //NextLevel.id: (_, Agent001Game gameRef) => NextLevel(gameRef),

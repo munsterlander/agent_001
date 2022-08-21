@@ -13,9 +13,9 @@ dependencies:
   flame: 1.3.0
   mini_sprite: 0.0.1
   flame_mini_sprite: 0.0.1
-  google_fonts: ^3.0.1
-  flame_audio: ^1.3.1
-  flutter_native_splash: ^2.2.7
+  google_fonts: 3.0.1
+  flame_audio: 1.3.1
+  flutter_native_splash: 2.2.7
   pixel_border: ^2.0.0-nullsafety.1
 
 dev_dependencies:
@@ -29,4 +29,4 @@ flutter:
     - assets/images/
 
 flutter_native_splash:
-  color: "#000000"
+  color: "#ffffff"
