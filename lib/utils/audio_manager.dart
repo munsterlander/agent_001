@@ -13,6 +13,9 @@ class AudioManager {
       'player_shoot.wav',
       'enemy_shoot.wav',
       'turret_shoot.wav',
+      'key.wav',
+      'player_hit.wav',
+      'enemy_hit.wav',
 /*       'bgm.wav',
       'boss_bgm.wav', */
       'player_step.wav',
