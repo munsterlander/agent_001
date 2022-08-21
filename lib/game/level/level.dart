@@ -1,6 +1,7 @@
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/level/health_up.dart';
 import 'package:agent_001/game/level/turret.dart';
+import 'package:agent_001/game/overlays/game_won.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:agent_001/utils/minisprite_ext.dart';
 import 'package:flame/components.dart';
@@ -135,7 +136,7 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
 
                 case SpriteIds.door:
                   {
-                    final nextLevelId = objectData.value['nextLevel'];
+                    final nextLevelIdString = objectData.value['nextLevel'];
                     add(
                       Door(
                         sprite: gameRef.getSprite(data.value)!,
@@ -145,13 +146,18 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
                         ),
                         size: Vector2.all(gridSize),
                         initialState: levelData.initialState,
-                        isLevelDoor: nextLevelId != null,
+                        isLevelDoor: nextLevelIdString != null,
                         onDoorOpen: () {
-                          if (nextLevelId != null) {
-                            final nextLevelData =
-                                gameRef.getLevelData(int.parse(nextLevelId));
-                            if (nextLevelData != null) {
-                              parent?.add(Level(levelData: nextLevelData));
+                          if (nextLevelIdString != null) {
+                            int nextLevelId = int.parse(nextLevelIdString);
+                            if (nextLevelId == 4) {
+                              gameRef.overlays.add(GameWon.id);
+                            } else {
+                              final nextLevelData =
+                                  gameRef.getLevelData(nextLevelId);
+                              if (nextLevelData != null) {
+                                parent?.add(Level(levelData: nextLevelData));
+                              }
                             }
                             removeFromParent();
                           }
