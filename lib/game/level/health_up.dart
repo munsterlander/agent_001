@@ -19,7 +19,7 @@ class HealthUp extends SpriteComponent {
 
   @override
   Future<void>? onLoad() {
-    add(CircleHitbox()..collisionType = CollisionType.passive);
+    add(hitbox = CircleHitbox()..collisionType = CollisionType.passive);
     return super.onLoad();
   }
 

@@ -187,8 +187,12 @@ class Player extends PositionComponent
         ++keyCount;
         other.collect();
       } else if (other is HealthUp) {
-        gameRef.playerData.health.value = gameRef.playerData.health.value
-            .clamp(0, gameRef.playerData.health.value + 25);
+        if (gameRef.playerData.health.value < 75) {
+          gameRef.playerData.health.value += 25;
+        } else {
+          gameRef.playerData.health.value = 100;
+        }
+
         other.collect();
       } else if (other is Bullet && other.bulletType == BulletType.enemy) {
         other.removeFromParent();

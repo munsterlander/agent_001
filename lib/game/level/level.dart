@@ -1,4 +1,5 @@
 import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/game/level/health_up.dart';
 import 'package:agent_001/game/level/turret.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:agent_001/utils/minisprite_ext.dart';
@@ -163,6 +164,20 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
                   {
                     add(
                       KeyComponent(
+                        sprite: gameRef.getSprite(data.value)!,
+                        position: Vector2(
+                          objectData.key.x * gridSize,
+                          objectData.key.y * gridSize,
+                        ),
+                        size: Vector2.all(gridSize) / 2,
+                      ),
+                    );
+                    break;
+                  }
+                case SpriteIds.heart:
+                  {
+                    add(
+                      HealthUp(
                         sprite: gameRef.getSprite(data.value)!,
                         position: Vector2(
                           objectData.key.x * gridSize,
