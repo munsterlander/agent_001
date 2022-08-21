@@ -22,14 +22,10 @@ class Credits extends PositionComponent with HasGameRef<Agent001Game> {
   Future<void>? onLoad() async {
     add(
       closeButton = ButtonComponent(
-        button: TextBoxComponent(
-          textRenderer: pixelFont,
+        button: TextComponent(
+          textRenderer: pixelFont14,
           text:
               'Credit goes to @DevKage (1000%) and a bit to Munsterlander.  Music by the wife of Munsterlander.  Google Font by CodeMan38.',
-          boxConfig: TextBoxConfig(
-            growingBox: true,
-          ),
-          pixelRatio: 100,
         ),
         position: gameRef.size / 2,
         anchor: Anchor.center,

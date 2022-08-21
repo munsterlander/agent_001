@@ -4,8 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 const double gridSize = 22;
 
-final pixelFont = TextPaint(
-  style: GoogleFonts.pressStart2p(color: Colors.white),
+final pixelFont14 = TextPaint(
+  style: GoogleFonts.pressStart2p(color: Colors.white, fontSize: 14.0),
+);
+
+final pixelFont24 = TextPaint(
+  style: GoogleFonts.pressStart2p(color: Colors.white, fontSize: 24.0),
 );
 
 class SpriteIds {

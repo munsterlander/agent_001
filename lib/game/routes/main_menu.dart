@@ -23,13 +23,9 @@ class MainMenu extends PositionComponent with HasGameRef<Agent001Game> {
   Future<void>? onLoad() async {
     add(
       playButton = ButtonComponent(
-        button: TextBoxComponent(
-          textRenderer: pixelFont,
+        button: TextComponent(
+          textRenderer: pixelFont14,
           text: 'Play',
-          boxConfig: TextBoxConfig(
-            growingBox: true,
-          ),
-          pixelRatio: 100,
         ),
         position: gameRef.size / 2,
         anchor: Anchor.center,
@@ -40,13 +36,9 @@ class MainMenu extends PositionComponent with HasGameRef<Agent001Game> {
     );
 
     add(
-      TextBoxComponent(
-        textRenderer: pixelFont,
+      TextComponent(
+        textRenderer: pixelFont24,
         text: 'Agent 001',
-        boxConfig: TextBoxConfig(
-          growingBox: true,
-        ),
-        pixelRatio: 100,
         position: Vector2(playButton.position.x / 2, playButton.position.y / 2),
       ),
     );
@@ -71,13 +63,9 @@ class MainMenu extends PositionComponent with HasGameRef<Agent001Game> {
 
     add(
       instructionsButton = ButtonComponent(
-        button: TextBoxComponent(
-          textRenderer: pixelFont,
+        button: TextComponent(
+          textRenderer: pixelFont14,
           text: 'Instructions',
-          boxConfig: TextBoxConfig(
-            growingBox: true,
-          ),
-          pixelRatio: 100,
         ),
         position: Vector2(playButton.position.x, (playButton.position.y * 1.4)),
         anchor: Anchor.center,

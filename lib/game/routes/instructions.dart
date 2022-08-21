@@ -22,13 +22,9 @@ class Instructions extends PositionComponent with HasGameRef<Agent001Game> {
   Future<void>? onLoad() async {
     add(
       closeButton = ButtonComponent(
-        button: TextBoxComponent(
-          textRenderer: pixelFont,
+        button: TextComponent(
+          textRenderer: pixelFont14,
           text: 'These are instructions and click to close',
-          boxConfig: TextBoxConfig(
-            growingBox: true,
-          ),
-          pixelRatio: 100,
         ),
         position: gameRef.size / 2,
         anchor: Anchor.center,
