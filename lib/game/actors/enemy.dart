@@ -157,6 +157,9 @@ class Enemy extends PositionComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (health > 0) {
       if (other is Bullet && other.bulletType == BulletType.player) {
+        other.removeFromParent();
+        AudioManager.playSfx('enemy_hit.wav');
+
         if (health > 0) {
           health -= 25;
           if (health == 0) {
