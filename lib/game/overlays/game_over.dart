@@ -48,9 +48,12 @@ class GameOver extends StatelessWidget {
                 height: 75,
                 child: ElevatedButton(
                   onPressed: () {
+                    gameRef.playerData.reset();
                     gameRef.overlays.remove(id);
                     gameRef.add(
-                      Level(levelData: gameRef.getLevelData(0)!),
+                      Level(
+                          levelData: gameRef
+                              .getLevelData(gameRef.playerData.curretLevel)!),
                     );
                   },
                   style: ElevatedButton.styleFrom(
