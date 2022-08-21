@@ -40,6 +40,14 @@ class Agent001Game extends FlameGame
       gridSize: gridSize,
       levelIndex: 1,
     ),
+    LevelData(
+      levelString: level3Map,
+      levelName: 'Level 3',
+      width: 25,
+      height: 15,
+      gridSize: gridSize,
+      levelIndex: 2,
+    ),
   ];
 
   late final RouterComponent router;
