@@ -1,0 +1,417 @@
+body {
+  margin: 0;
+  height: 100%;
+  background: #000000;
+
+  background-size: 100% 100%;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.contain {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.stretch {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.bottomLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.bottomRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    margin: 0;
+    height: 100%;
+    background: #000000;
+
+    background-size: 100% 100%;
+  }
+}
+
+#bond-open {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background-color: #000;
+  position: relative;
+  margin: 0 auto 2em;
+  box-sizing: content-box;
+}
+
+.dot-box {
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  left: 7%;
+  box-sizing: content-box;
+}
+
+.dot0,
+.dot1,
+.dot2,
+.dot3,
+.dot4,
+.dot5,
+.dot6 {
+  margin: -50px 0px 0px 0px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 80%;
+  opacity: 0;
+  background: rgb(245, 246, 246);
+  background: radial-gradient(ellipse at center, rgba(245, 246, 246, 1) 0%, rgba(234, 236, 242, 1) 23%, rgba(234, 236, 239, 1) 49%, rgba(239, 241, 244, 1) 80%, rgba(245, 246, 246, 1) 100%);
+}
+
+
+.dot0 {
+  background-color: transparent;
+  opacity: 0;
+  animation: dot0 8s linear;
+}
+
+.dot1 {
+  margin: -50px 0px 0px 54px;
+  animation: dot 1s linear;
+  animation-delay: 0.7s;
+}
+
+.dot2 {
+  margin: -50px 0px 0px 208px;
+  animation: dot 1s linear;
+  animation-delay: 1.3s;
+}
+
+.dot3 {
+  margin: -50px 0px 0px 362px;
+  animation: dot 1s linear;
+  animation-delay: 2s;
+}
+
+.dot4 {
+  margin: -50px 0px 0px 516px;
+  animation: dot 1s linear;
+  animation-delay: 2.7s;
+}
+
+.dot5 {
+  margin: -50px 0px 0px 670px;
+  animation: dot 1s linear;
+  animation-delay: 3.3s;
+}
+
+.dot6 {
+  margin: -50px 0px 0px 824px;
+  animation: dot 1s linear;
+  animation-delay: 4s;
+}
+
+@keyframes dot0 {
+  0% {
+    left: -100px;
+    opacity: 1;
+    background-color: #FFFFFF;
+  }
+
+  60% {
+    left: 1000px;
+    opacity: 1;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    background-color: #FFFFFF;
+  }
+
+  75% {
+    left: 1000px;
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    background-color: #FFFFFF;
+  }
+
+  100% {
+    left: 1000px;
+    opacity: 0;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    background-color: transparent;
+  }
+}
+
+@keyframes dot {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Bond Image */
+#bond {
+  padding: 60px 95px 60px 115px;
+  left: 50%;
+  top: 50%;
+  width: 90px;
+  height: 180px;
+  margin-top: -150px;
+  margin-left: -150px;
+  position: absolute;
+  opacity: 0;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  animation: bond 5s linear;
+  animation-delay: 11.6s;
+  box-sizing: content-box;
+}
+
+@keyframes bond {
+  0.00% {
+    opacity: 0;
+  }
+
+  5.00% {
+    opacity: 0;
+  }
+
+  12.8% {
+    opacity: 0;
+  }
+
+  12.9% {
+    opacity: 1;
+  }
+
+  14.6% {
+    opacity: 1;
+  }
+
+  47.0% {
+    opacity: 1;
+  }
+
+  51.0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* The Gun barrel */
+/* == The Gun Barrel View ==*/
+.barrel {
+  top: 80%;
+  left: 50%;
+  margin-top: -600px;
+  margin-left: -540px;
+  width: 1080px;
+  height: 1000px;
+  border-radius: 50%;
+  z-index: 10;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  box-shadow: 0 0 150px 150px #333333, 0 0 250px 250px #FFFFFF inset, 0 0 250px 250px #FFFFFF inset;
+  animation: barrel 10s linear;
+  animation-delay: 4.5s;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+#bore {
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  margin-top: -150px;
+  margin-left: -150px;
+  border: 5px solid #000000;
+  border-radius: 50%;
+  position: absolute;
+  background: none;
+  box-shadow: 0 0 350px 350px #444444, 0 0 250px 250px #444444;
+  box-sizing: content-box;
+}
+
+#line1,
+#line2,
+#line3,
+#line4,
+#line5,
+#line6,
+#line7,
+#line8 {
+  border-radius: 30% 0 0 70%;
+  width: 500px;
+  height: 700px;
+  border: 8px solid #000;
+  border-color: transparent transparent transparent #000;
+  position: relative;
+  box-sizing: content-box;
+}
+
+#line1 {
+  margin: 440px 0px 0px 338px;
+  transform: rotateZ(0deg);
+}
+
+#line2 {
+  margin: -760px 0px 0px 110px;
+  transform: rotateZ(45deg);
+}
+
+#line3 {
+  margin: -915px 0px 0px -10px;
+  transform: rotateZ(90deg);
+}
+
+#line4 {
+  margin: -940px 0px 0px 44px;
+  transform: rotateZ(135deg);
+}
+
+#line5 {
+  margin: -845px 0px 0px 237px;
+  transform: rotateZ(180deg);
+}
+
+#line6 {
+  margin: -679px 0px 0px 480px;
+  transform: rotateZ(225deg);
+}
+
+#line7 {
+  margin: -500px 0px 0px 590px;
+  transform: rotateZ(270deg);
+}
+
+#line8 {
+  margin: -483px 0px 0px 540px;
+  transform: rotateZ(315deg);
+}
+
+@keyframes barrel {
+  0% {
+    margin-left: -120px;
+    margin-top: -498px;
+    transform: scale(0.1);
+    opacity: 0.0;
+    background: transparent;
+  }
+
+  40% {
+    margin-left: -120px;
+    margin-top: -498px;
+    transform: scale(0.1);
+    opacity: 1.0;
+    background: transparent;
+  }
+
+  80% {
+    margin-left: -540px;
+    margin-top: -700px;
+    transform: scale(0.7);
+    opacity: 1.0;
+    background: transparent;
+  }
+  100% {
+    margin-left: -540px;
+    margin-top: -700px;
+    transform: scale(0.7);
+    opacity: 0.0;
+    background: transparent;
+  }
+}
+
+
+
+/* ===== 001 Text  ===== */
+#one {
+  margin: 0px 0px 0px -170px;
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  opacity: 0;
+  z-index: 30;
+  animation: one 10s linear;
+  animation-delay: 9s;
+  font-size: 200px;
+  color: #FFFFFF;
+  text-align: center;
+  width: 350px;
+  font-family: 'Press Start 2P';
+  box-sizing: content-box;
+}
+
+@keyframes one {
+  0% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
