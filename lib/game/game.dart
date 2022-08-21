@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:agent_001/assets/mini_levels.dart';
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/level/hud.dart';
@@ -68,9 +66,7 @@ class Agent001Game extends FlameGame
   ];
 
   void initialization() async {
-    if (!Platform.isWindows) {
-      await Future.delayed(const Duration(seconds: 13));
-    }
+    //await Future.delayed(const Duration(seconds: 13));
     FlutterNativeSplash.remove();
   }
 

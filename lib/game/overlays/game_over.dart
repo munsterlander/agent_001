@@ -1,16 +1,17 @@
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/utils/constants.dart';
 import 'package:pixel_border/pixel_border.dart';
+import 'package:agent_001/game/level/level.dart';
 import 'package:flutter/material.dart';
 
-class Credits extends StatelessWidget {
+class GameOver extends StatelessWidget {
   // An unique identified for this overlay.
-  static const id = 'Credits';
+  static const id = 'GameOver';
 
   // Reference to parent game.
   final Agent001Game gameRef;
 
-  const Credits({super.key, required this.gameRef});
+  const GameOver({super.key, required this.gameRef});
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +30,16 @@ class Credits extends StatelessWidget {
               color: whiteTextColor,
             ),
           ),
-          height: 450,
-          width: 500,
+          height: 200,
+          width: 300,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Credits',
+                'Game Over',
                 style: TextStyle(
                   color: whiteTextColor,
                   fontSize: 24,
-                ),
-              ),
-              const SizedBox(height: 40),
-              const Text(
-                'Credits to the wonderful team:\n\n@DevKage - The coding genius\n\nMunsterlander - The sidekick\n\nWife of Munsterlander - Master of Sound\n\nA huge thank you to the entire Blue Fire team!',
-                style: TextStyle(
-                  color: whiteTextColor,
-                  fontSize: 12,
                 ),
               ),
               const SizedBox(height: 40),
@@ -56,6 +49,9 @@ class Credits extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     gameRef.overlays.remove(id);
+                    gameRef.add(
+                      Level(levelData: gameRef.getLevelData(0)!),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: whiteTextColor,
@@ -65,7 +61,7 @@ class Credits extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'Close',
+                    'Play Again',
                     style: TextStyle(
                       fontSize: 14.0,
                       color: blackTextColor,
