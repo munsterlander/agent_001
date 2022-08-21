@@ -109,6 +109,7 @@ class Level extends Component with HasGameRef<Agent001Game> {
 
                 case SpriteIds.door:
                   {
+                    final nextLevelId = objectData.value['nextLevel'];
                     add(
                       Door(
                         sprite: gameRef.getSprite(data.value)!,
@@ -119,12 +120,14 @@ class Level extends Component with HasGameRef<Agent001Game> {
                         size: Vector2.all(gridSize),
                         initialState: levelData.initialState,
                         onDoorOpen: () {
-                          final nextLevelData =
-                              gameRef.getLevelData(levelData.levelIndex + 1);
-                          if (nextLevelData != null) {
-                            parent?.add(Level(levelData: nextLevelData));
+                          if (nextLevelId != null) {
+                            final nextLevelData =
+                                gameRef.getLevelData(int.parse(nextLevelId));
+                            if (nextLevelData != null) {
+                              parent?.add(Level(levelData: nextLevelData));
+                            }
+                            removeFromParent();
                           }
-                          removeFromParent();
                         },
                       ),
                     );

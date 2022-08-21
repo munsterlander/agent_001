@@ -92,6 +92,13 @@ class Agent001Game extends FlameGame
       ),
     );
 
+    _spritesMap.addAll(
+      await MiniLibrary.fromDataString(enemyTurret).toSprites(
+        color: Colors.white,
+        pixelSize: 1,
+      ),
+    );
+
     //add(Level());
   }
 
