@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ImageTextButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -23,7 +22,7 @@ class ImageTextButton extends StatelessWidget {
         children: <Widget>[
           Text(
             cardText,
-            style: GoogleFonts.pressStart2p(
+            style: const TextStyle(
               fontSize: 14.0,
               color: _textColor,
             ),
@@ -45,7 +44,7 @@ class ImageTextButton extends StatelessWidget {
                   heightFactor: 3.0,
                   child: Text(
                     buttonText,
-                    style: GoogleFonts.pressStart2p(
+                    style: const TextStyle(
                       fontSize: 14.0,
                       color: _textColor,
                     ),

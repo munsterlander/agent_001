@@ -2,12 +2,16 @@ import 'package:agent_001/game/level/wall_block.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
+enum BulletType { player, enemy }
+
 class Bullet extends RectangleComponent with CollisionCallbacks {
   double speed = 300;
   final Vector2 direction;
+  final BulletType bulletType;
 
   Bullet({
     required this.direction,
+    required this.bulletType,
     super.position,
     super.size,
     super.angle,

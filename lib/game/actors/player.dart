@@ -45,7 +45,7 @@ class Player extends PositionComponent
     }
   }
 
-  final _fireRateTimer = Timer(0.5, autoStart: false, repeat: true);
+  final _fireRateTimer = Timer(0.3, autoStart: false, repeat: true);
 
   Player({
     Map<PlayerState, SpriteAnimation>? animations,
@@ -154,7 +154,14 @@ class Player extends PositionComponent
             .normalized()
             .scaled(_circleHitbox.radius - collisionNormal.length);
       }
-    } else if (other is Door) {
+    }
+    super.onCollision(intersectionPoints, other);
+  }
+
+  @override
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is Door) {
       if (other.state == DoorState.locked && keyCount > 0) {
         --keyCount;
         other.state = DoorState.unlocked;
@@ -164,8 +171,13 @@ class Player extends PositionComponent
     } else if (other is KeyComponent) {
       ++keyCount;
       other.collect();
+    } else if (other is Bullet && other.bulletType == BulletType.enemy) {
+      if (gameRef.playerData.health.value > 0) {
+        gameRef.camera.shake(duration: 0.1, intensity: 1);
+        gameRef.playerData.health.value -= 5;
+      }
     }
-    super.onCollision(intersectionPoints, other);
+    super.onCollisionStart(intersectionPoints, other);
   }
 
   void fire() {
@@ -173,6 +185,7 @@ class Player extends PositionComponent
     AudioManager.playSfx('player_shoot.wav');
     gameRef.add(
       Bullet(
+        bulletType: BulletType.player,
         direction: dir,
         size: Vector2(2, 3),
         position: absolutePosition + dir * 10,

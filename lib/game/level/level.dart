@@ -143,6 +143,7 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
                         ),
                         size: Vector2.all(gridSize),
                         initialState: levelData.initialState,
+                        isLevelDoor: nextLevelId != null,
                         onDoorOpen: () {
                           if (nextLevelId != null) {
                             final nextLevelData =

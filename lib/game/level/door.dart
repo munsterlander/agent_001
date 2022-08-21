@@ -12,9 +12,11 @@ enum DoorState {
 
 class Door extends SpriteComponent with CollisionCallbacks {
   final void Function() onDoorOpen;
+  final bool isLevelDoor;
 
   Door({
     required this.onDoorOpen,
+    required this.isLevelDoor,
     DoorState initialState = DoorState.locked,
     super.sprite,
     super.paint,
@@ -70,7 +72,9 @@ class Door extends SpriteComponent with CollisionCallbacks {
 
   void open() {
     hitbox.collisionType = CollisionType.inactive;
-    AudioManager.playSfx('door.wav');
+    if (isLevelDoor) {
+      AudioManager.playSfx('door.wav');
+    }
     add(
       OpacityEffect.fadeOut(
         LinearEffectController(0.5),

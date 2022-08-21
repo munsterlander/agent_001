@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:agent_001/assets/mini_levels.dart';
 import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/game/level/hud.dart';
 import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/level_data.dart';
+import 'package:agent_001/utils/player_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/extensions.dart';
@@ -26,6 +28,7 @@ class Agent001Game extends FlameGame
         HasTappables {
   @override
   Color backgroundColor() => const Color(0xFF000000);
+  final playerData = PlayerData();
 
   final _spritesMap = <String, Sprite>{};
   final _levelDataList = const [
@@ -120,6 +123,8 @@ class Agent001Game extends FlameGame
         pixelSize: 1,
       ),
     );
+
+    add(Hud());
   }
 
   @override

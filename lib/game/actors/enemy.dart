@@ -154,6 +154,7 @@ class Enemy extends PositionComponent with HasGameRef<Agent001Game> {
     angle = Vector2(0, -1).angleToSigned(dir);
     gameRef.add(
       Bullet(
+        bulletType: BulletType.enemy,
         direction: dir,
         size: Vector2(2, 3),
         position: absoluteCenter,
@@ -175,10 +176,14 @@ class _PlayerDetector extends PositionComponent
   _PlayerDetector({
     super.position,
     required super.size,
+    // ignore: unused_element
     super.scale,
+    // ignore: unused_element
     super.angle,
     super.anchor,
+    // ignore: unused_element
     super.children,
+    // ignore: unused_element
     super.priority,
   });
 
