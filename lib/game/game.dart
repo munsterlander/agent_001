@@ -63,6 +63,14 @@ class Agent001Game extends FlameGame
       gridSize: gridSize,
       levelIndex: 3,
     ),
+    LevelData(
+      levelString: MiniLevel.level5,
+      levelName: 'Level 5',
+      width: 55,
+      height: 35,
+      gridSize: gridSize,
+      levelIndex: 4,
+    ),
   ];
 
   void initialization() async {
