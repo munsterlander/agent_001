@@ -228,10 +228,29 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
               }
               break;
             }
-          default:
-            debugPrint(data.toString());
         }
       }
     }
+  }
+
+  void displayRetryOptions() {
+    final text = TextComponent(
+      text: 'Game Over',
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontFamily: 'PressStartP2',
+          fontSize: 10,
+        ),
+      ),
+    );
+
+    add(
+      NineTileBoxComponent(
+        position: gameRef.size / 2,
+        nineTileBox: NineTileBox(gameRef.getSprite(SpriteIds.dialog)!),
+        children: [text],
+        size: text.size,
+      ),
+    );
   }
 }

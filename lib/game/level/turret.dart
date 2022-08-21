@@ -75,7 +75,8 @@ class Turret extends SpriteComponent with HasGameRef<Agent001Game> {
         result.distance != null &&
         result.distance! < range &&
         result.hitbox != null &&
-        result.hitbox!.parent is Player);
+        result.hitbox!.parent is Player &&
+        (result.hitbox!.parent as Player).isAlive);
     _fireRateTimer.update(dt);
     super.update(dt);
   }
