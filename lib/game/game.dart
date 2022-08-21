@@ -12,7 +12,6 @@ import 'package:mini_sprite/mini_sprite.dart';
 import '../assets/assets.dart';
 import '../utils/constants.dart';
 import '../utils/move_movement_detector.dart';
-import 'level/level.dart';
 
 class Agent001Game extends FlameGame
     with

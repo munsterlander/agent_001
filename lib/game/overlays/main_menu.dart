@@ -19,57 +19,82 @@ class MainMenu extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: ShapeDecoration(
-                shape: PixelBorder.solid(
-                  pixelSize: 2.0,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8.0),
-                    bottomRight: Radius.circular(16.0),
-                  ),
-                  color: Colors.purple,
-                ),
+        child: Container(
+          padding: const EdgeInsets.all(10.0),
+          decoration: ShapeDecoration(
+            shape: PixelBorder.solid(
+              pixelSize: 2.0,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                bottomRight: Radius.circular(16.0),
               ),
-              height: 200,
-              width: 400,
+              color: whiteTextColor,
             ),
-            SizedBox(
-              width: 100,
-              child: ElevatedButton(
-                onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.add(Level(levelData: gameRef.getLevelData(0)!));
-                },
-                child: Text(
-                  'Play',
-                  style: GoogleFonts.pressStart2p(
-                    fontSize: 14.0,
-                    color: whiteTextColor,
+          ),
+          height: 300,
+          width: 300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Agent 001',
+                style: GoogleFonts.pressStart2p(
+                  fontSize: 24.0,
+                  color: whiteTextColor,
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: 150,
+                height: 75,
+                child: ElevatedButton(
+                  onPressed: () {
+                    gameRef.overlays.remove(id);
+                    gameRef.add(Level(levelData: gameRef.getLevelData(0)!));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: whiteTextColor,
+                    shape: PixelBorder.shape(
+                      borderRadius: BorderRadius.circular(10.0),
+                      pixelSize: 5.0,
+                    ),
+                  ),
+                  child: Text(
+                    'Play',
+                    style: GoogleFonts.pressStart2p(
+                      fontSize: 14.0,
+                      color: blackTextColor,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 100,
-              child: ElevatedButton(
-                onPressed: () {
-                  gameRef.overlays.remove(id);
-                  //gameRef.overlays.add(Settings.id);
-                },
-                child: Text(
-                  'Settings',
-                  style: GoogleFonts.pressStart2p(
-                    fontSize: 14.0,
-                    color: whiteTextColor,
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 150,
+                height: 75,
+                child: ElevatedButton(
+                  onPressed: () {
+                    gameRef.overlays.remove(id);
+                    //gameRef.overlays.add(Settings.id);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: whiteTextColor,
+                    shape: PixelBorder.shape(
+                      borderRadius: BorderRadius.circular(10.0),
+                      pixelSize: 5.0,
+                    ),
+                  ),
+                  child: Text(
+                    'Settings',
+                    style: GoogleFonts.pressStart2p(
+                      fontSize: 14.0,
+                      color: blackTextColor,
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
