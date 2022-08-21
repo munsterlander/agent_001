@@ -35,5 +35,6 @@ class SpriteIds {
   static const String button = 'button';
   static const String toggleOff = 'off';
   static const String toggleOn = 'on';
+  static const String enemyTurret = 'enemy_turret';
   static const String agentMan = 'agentMan';
 }

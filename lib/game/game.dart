@@ -44,6 +44,14 @@ class Agent001Game extends FlameGame
       gridSize: gridSize,
       levelIndex: 1,
     ),
+    LevelData(
+      levelString: level3Map,
+      levelName: 'Level 3',
+      width: 25,
+      height: 15,
+      gridSize: gridSize,
+      levelIndex: 2,
+    ),
   ];
 
   late final RouterComponent router;
@@ -89,6 +97,13 @@ class Agent001Game extends FlameGame
       ),
     );
 
+    _spritesMap.addAll(
+      await MiniLibrary.fromDataString(enemyTurret).toSprites(
+        color: Colors.white,
+        pixelSize: 1,
+      ),
+    );
+
     router = RouterComponent(
       initialRoute: 'home',
       routes: {
@@ -97,7 +112,7 @@ class Agent001Game extends FlameGame
         'credits': Route(Credits.new),
         'instructions': Route(Instructions.new),
         'gameplay': Route(
-          () => Level(levelData: getLevelData(0)!),
+          () => Level(levelData: getLevelData(2)!),
         ),
       },
     );
