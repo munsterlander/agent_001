@@ -43,7 +43,8 @@ class Agent001GameApp extends StatelessWidget {
             );
           },
           overlayBuilderMap: {
-            MainMenu.id: (_, Agent001Game gameRef) => MainMenu(gameRef),
+            MainMenu.id: (_, Agent001Game gameRef) =>
+                MainMenu(gameRef: gameRef),
             //GameOver.id: (_, Agent001Game gameRef) => GameOver(gameRef),
             //Settings.id: (_, Agent001Game gameRef) => Settings(gameRef),
             //NextLevel.id: (_, Agent001Game gameRef) => NextLevel(gameRef),
