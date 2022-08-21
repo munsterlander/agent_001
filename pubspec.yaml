@@ -25,6 +25,7 @@ flutter:
   assets:
     - google_fonts/
     - assets/audio/
+    - assets/images/
 
 flutter_native_splash:
   color: "#000000"
