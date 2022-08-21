@@ -10,29 +10,37 @@ class MainMenu extends StatelessWidget {
   // Reference to parent game.
   final Agent001Game gameRef;
 
-  const MainMenu(this.gameRef, {Key? key}) : super(key: key);
+  const MainMenu({super.key, required this.gameRef});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 500,
-        height: 500,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/dialog.png'),
-              fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 100,
+              child: ElevatedButton(
+                onPressed: () {
+                  gameRef.overlays.remove(id);
+                  Level(levelData: gameRef.getLevelData(0)!);
+                },
+                child: const Text('Play'),
+              ),
             ),
-          ),
-          child: ImageTextButton(
-            cardText: 'Agent 001',
-            buttonText: 'Play',
-            onPressed: () {
-              gameRef.overlays.remove(MainMenu.id);
-              Level(levelData: gameRef.getLevelData(0)!);
-            },
-          ),
+            SizedBox(
+              width: 100,
+              child: ElevatedButton(
+                onPressed: () {
+                  gameRef.overlays.remove(id);
+                  //gameRef.overlays.add(Settings.id);
+                },
+                child: const Text('Settings'),
+              ),
+            )
+          ],
         ),
       ),
     );
