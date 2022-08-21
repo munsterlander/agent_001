@@ -1,6 +1,5 @@
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/utils/constants.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_border/pixel_border.dart';
 import 'package:agent_001/game/level/level.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +43,9 @@ class Instructions extends StatelessWidget {
                   gameRef.overlays.remove(id);
                   gameRef.add(Level(levelData: gameRef.getLevelData(0)!));
                 },
-                child: Text(
+                child: const Text(
                   'Play',
-                  style: GoogleFonts.pressStart2p(
+                  style: TextStyle(
                     fontSize: 14.0,
                     color: whiteTextColor,
                   ),
@@ -60,9 +59,9 @@ class Instructions extends StatelessWidget {
                   gameRef.overlays.remove(id);
                   //gameRef.overlays.add(Settings.id);
                 },
-                child: Text(
+                child: const Text(
                   'Settings',
-                  style: GoogleFonts.pressStart2p(
+                  style: TextStyle(
                     fontSize: 14.0,
                     color: whiteTextColor,
                   ),

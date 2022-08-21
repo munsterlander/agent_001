@@ -13,8 +13,8 @@ void main() {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('google_fonts/OFL.txt');
-    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+    final license = await rootBundle.loadString('assets/fonts/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['PressStartP2'], license);
   });
 
   runApp(const Agent001GameApp());
@@ -29,6 +29,7 @@ class Agent001GameApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Agent 001',
       theme: ThemeData(
+        fontFamily: 'PressStartP2',
         buttonTheme: ButtonThemeData(
           shape: PixelBorder.solid(
             pixelSize: 2.0,

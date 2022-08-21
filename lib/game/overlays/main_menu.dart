@@ -1,6 +1,5 @@
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/utils/constants.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pixel_border/pixel_border.dart';
 import 'package:agent_001/game/level/level.dart';
 import 'package:flutter/material.dart';
@@ -36,11 +35,11 @@ class MainMenu extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Agent 001',
-                style: GoogleFonts.pressStart2p(
-                  fontSize: 24.0,
+                style: TextStyle(
                   color: whiteTextColor,
+                  fontSize: 24,
                 ),
               ),
               const SizedBox(height: 40),
@@ -61,9 +60,9 @@ class MainMenu extends StatelessWidget {
                       pixelSize: 5.0,
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Play',
-                    style: GoogleFonts.pressStart2p(
+                    style: TextStyle(
                       fontSize: 14.0,
                       color: blackTextColor,
                     ),
@@ -86,9 +85,9 @@ class MainMenu extends StatelessWidget {
                       pixelSize: 5.0,
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Settings',
-                    style: GoogleFonts.pressStart2p(
+                    style: TextStyle(
                       fontSize: 14.0,
                       color: blackTextColor,
                     ),

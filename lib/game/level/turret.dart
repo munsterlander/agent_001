@@ -86,6 +86,7 @@ class Turret extends SpriteComponent with HasGameRef<Agent001Game> {
     AudioManager.playSfx('turret_shoot.wav');
     gameRef.add(
       Bullet(
+        bulletType: BulletType.enemy,
         direction: dir,
         size: Vector2(2, 3),
         position: absolutePosition + dir * 10,
