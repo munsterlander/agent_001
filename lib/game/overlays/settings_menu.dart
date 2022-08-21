@@ -1,4 +1,7 @@
 import 'package:agent_001/game/game.dart';
+import 'package:agent_001/game/overlays/credits.dart';
+import 'package:agent_001/game/overlays/instructions.dart';
+import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/constants.dart';
 import 'package:pixel_border/pixel_border.dart';
 import 'package:agent_001/game/level/level.dart';
@@ -18,57 +21,118 @@ class SettingsMenu extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: ShapeDecoration(
-                shape: PixelBorder.solid(
-                  pixelSize: 2.0,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8.0),
-                    bottomRight: Radius.circular(16.0),
-                  ),
-                  color: Colors.purple,
-                ),
+        child: Container(
+          padding: const EdgeInsets.all(10.0),
+          decoration: ShapeDecoration(
+            shape: PixelBorder.solid(
+              pixelSize: 2.0,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                bottomRight: Radius.circular(16.0),
               ),
-              height: 200,
-              width: 400,
+              color: whiteTextColor,
             ),
-            SizedBox(
-              width: 100,
-              child: ElevatedButton(
-                onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.add(Level(levelData: gameRef.getLevelData(0)!));
-                },
-                child: const Text(
-                  'Play',
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: whiteTextColor,
+          ),
+          height: 400,
+          width: 300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Settings',
+                style: TextStyle(
+                  color: whiteTextColor,
+                  fontSize: 24,
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: 300,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: AudioManager.sfx,
+                  builder: (context, sfx, child) => SwitchListTile(
+                    activeColor: whiteTextColor,
+                    title: const Text(
+                      'Sound Effects',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: whiteTextColor,
+                      ),
+                    ),
+                    value: sfx,
+                    onChanged: (value) => AudioManager.sfx.value = value,
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 100,
-              child: ElevatedButton(
-                onPressed: () {
-                  gameRef.overlays.remove(id);
-                  //gameRef.overlays.add(Settings.id);
-                },
-                child: const Text(
-                  'Settings',
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: whiteTextColor,
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 300,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: AudioManager.bgm,
+                  builder: (context, bgm, child) => SwitchListTile(
+                    activeColor: whiteTextColor,
+                    title: const Text(
+                      'Background Music',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: whiteTextColor,
+                      ),
+                    ),
+                    value: bgm,
+                    onChanged: (value) => AudioManager.bgm.value = value,
                   ),
                 ),
               ),
-            )
-          ],
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 200,
+                height: 75,
+                child: ElevatedButton(
+                  onPressed: () {
+                    gameRef.overlays.add(Credits.id);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: whiteTextColor,
+                    shape: PixelBorder.shape(
+                      borderRadius: BorderRadius.circular(10.0),
+                      pixelSize: 5.0,
+                    ),
+                  ),
+                  child: const Text(
+                    'Credits',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: blackTextColor,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 200,
+                height: 75,
+                child: ElevatedButton(
+                  onPressed: () {
+                    gameRef.overlays.remove(id);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: whiteTextColor,
+                    shape: PixelBorder.shape(
+                      borderRadius: BorderRadius.circular(10.0),
+                      pixelSize: 5.0,
+                    ),
+                  ),
+                  child: const Text(
+                    'Close',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: blackTextColor,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
