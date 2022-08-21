@@ -40,4 +40,12 @@ class Bullet extends RectangleComponent with CollisionCallbacks {
     }
     super.onCollisionStart(intersectionPoints, other);
   }
+
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    if (other is WallBlock) {
+      removeFromParent();
+    }
+    super.onCollisionEnd(other);
+  }
 }
