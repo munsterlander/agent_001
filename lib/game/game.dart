@@ -120,6 +120,13 @@ class Agent001Game extends FlameGame
       ),
     );
 
+    _spritesMap.addAll(
+      await MiniLibrary.fromDataString(heart).toSprites(
+        color: Colors.white,
+        pixelSize: 1,
+      ),
+    );
+
     add(Hud());
   }
 
