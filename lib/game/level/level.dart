@@ -1,4 +1,5 @@
 import 'package:agent_001/game/level/door.dart';
+import 'package:agent_001/game/level/turret.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:agent_001/utils/minisprite_ext.dart';
 import 'package:flame/components.dart';
@@ -139,6 +140,25 @@ class Level extends Component with HasGameRef<Agent001Game> {
                           objectData.key.y * gridSize,
                         ),
                         size: Vector2.all(gridSize) / 2,
+                      ),
+                    );
+                    break;
+                  }
+                case SpriteIds.enemyTurret:
+                  {
+                    add(
+                      Turret(
+                        startAngle:
+                            double.parse(objectData.value['startAngle']),
+                        endAngle: double.parse(objectData.value['endAngle']),
+                        rangeRadius:
+                            double.parse(objectData.value['rangeRadius']),
+                        sprite: gameRef.getSprite(data.value)!,
+                        position: Vector2(
+                          objectData.key.x * gridSize,
+                          objectData.key.y * gridSize,
+                        ),
+                        size: Vector2.all(gridSize),
                       ),
                     );
                     break;
