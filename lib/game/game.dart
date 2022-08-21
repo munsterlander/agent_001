@@ -66,9 +66,7 @@ class Agent001Game extends FlameGame
   ];
 
   void initialization() async {
-    if (!Platform.isWindows) {
-      await Future.delayed(const Duration(seconds: 13));
-    }
+    //await Future.delayed(const Duration(seconds: 13));
     FlutterNativeSplash.remove();
   }
 
