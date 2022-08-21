@@ -29,6 +29,7 @@ class MainMenu extends StatelessWidget {
             cardText: 'Agent 001',
             buttonText: 'Play',
             onPressed: () {
+              gameRef.overlays.remove(MainMenu.id);
               Level(levelData: gameRef.getLevelData(0)!);
             },
           ),
