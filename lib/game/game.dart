@@ -10,6 +10,7 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_mini_sprite/flame_mini_sprite.dart';
 import 'package:flutter/material.dart' show Colors;
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mini_sprite/mini_sprite.dart';
 
 import '../assets/assets.dart';
@@ -47,8 +48,14 @@ class Agent001Game extends FlameGame
 
   late final RouterComponent router;
 
+  void initialization() async {
+    await Future.delayed(const Duration(seconds: 13));
+    FlutterNativeSplash.remove();
+  }
+
   @override
   Future<void> onLoad() async {
+    initialization();
     // Loads all the audio assets
     await AudioManager.init();
     //AudioManager.playBgm('bgm.wav');

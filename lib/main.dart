@@ -20,8 +20,4 @@ void main() {
       game: Agent001Game(),
     ),
   );
-
-//  Future.delayed(const Duration(seconds: 15), () {
-  FlutterNativeSplash.remove();
-  //});
 }
