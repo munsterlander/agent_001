@@ -1,6 +1,7 @@
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/overlays/credits.dart';
 import 'package:agent_001/game/overlays/instructions.dart';
+import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/constants.dart';
 import 'package:pixel_border/pixel_border.dart';
 import 'package:agent_001/game/level/level.dart';
@@ -45,6 +46,44 @@ class SettingsMenu extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
+              SizedBox(
+                width: 300,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: AudioManager.sfx,
+                  builder: (context, sfx, child) => SwitchListTile(
+                    activeColor: whiteTextColor,
+                    title: const Text(
+                      'Sound Effects',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: whiteTextColor,
+                      ),
+                    ),
+                    value: sfx,
+                    onChanged: (value) => AudioManager.sfx.value = value,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 300,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: AudioManager.bgm,
+                  builder: (context, bgm, child) => SwitchListTile(
+                    activeColor: whiteTextColor,
+                    title: const Text(
+                      'Background Music',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: whiteTextColor,
+                      ),
+                    ),
+                    value: bgm,
+                    onChanged: (value) => AudioManager.bgm.value = value,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 200,
                 height: 75,
