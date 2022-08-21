@@ -16,8 +16,7 @@ class AudioManager {
       'key.wav',
       'player_hit.wav',
       'enemy_hit.wav',
-/*       'bgm.wav',
-      'boss_bgm.wav', */
+      'background_slow.wav',
       'player_step.wav',
       'door.wav',
     ];

@@ -75,7 +75,7 @@ class Agent001Game extends FlameGame
     initialization();
     // Loads all the audio assets
     await AudioManager.init();
-    //AudioManager.playBgm('bgm.wav');
+    AudioManager.playBgm('background_slow.wav');
 
     camera.viewport = FixedResolutionViewport(Vector2(640, 360) / 1.5);
     _spritesMap.addAll(
