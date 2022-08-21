@@ -8,6 +8,7 @@ import 'package:mini_sprite/mini_sprite.dart';
 
 import '../../assets/assets.dart';
 import '../../utils/constants.dart';
+import '../actors/enemy.dart';
 import '../actors/player.dart';
 import '../game.dart';
 import 'follow_cam.dart';
@@ -16,6 +17,8 @@ import 'wall_block.dart';
 
 class Level extends Component with HasGameRef<Agent001Game> {
   final LevelData levelData;
+  late Map<PlayerState, SpriteAnimation> playerAnimationStateMap;
+  late Map<EnemyState, SpriteAnimation> enemyAnimationStateMap;
 
   Level({
     required this.levelData,
@@ -33,12 +36,20 @@ class Level extends Component with HasGameRef<Agent001Game> {
       levelData.size.y,
     );
 
-    final playerAnimationStateMap = {
+    playerAnimationStateMap = {
       PlayerState.idle: await gameRef.loadSpriteAnimationFromDataString(player),
       PlayerState.shoot:
           await gameRef.loadSpriteAnimationFromDataString(playerShootAnimation),
       PlayerState.walk:
           await gameRef.loadSpriteAnimationFromDataString(playerWalkAnimation),
+    };
+
+    enemyAnimationStateMap = {
+      EnemyState.idle: await gameRef.loadSpriteAnimationFromDataString(enemy),
+      EnemyState.shoot:
+          await gameRef.loadSpriteAnimationFromDataString(enemyShootAnimation),
+      EnemyState.walk:
+          await gameRef.loadSpriteAnimationFromDataString(enemyWalkAnimation),
     };
 
     _spawnObjects(map, playerAnimationStateMap);
@@ -164,6 +175,21 @@ class Level extends Component with HasGameRef<Agent001Game> {
                         size: Vector2.all(gridSize),
                       ),
                     );
+                    break;
+                  }
+                case SpriteIds.enemy:
+                  {
+                    final enemy = Enemy(
+                      animations: enemyAnimationStateMap,
+                      current: EnemyState.walk,
+                      size: Vector2.all(gridSize),
+                      anchor: Anchor.center,
+                      position: Vector2(
+                        objectData.key.x * gridSize,
+                        objectData.key.y * gridSize,
+                      ),
+                    );
+                    add(enemy);
                     break;
                   }
               }

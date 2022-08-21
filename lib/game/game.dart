@@ -1,3 +1,4 @@
+import 'package:agent_001/assets/mini_levels.dart';
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/level_data.dart';
@@ -23,7 +24,7 @@ class Agent001Game extends FlameGame
   final _spritesMap = <String, Sprite>{};
   final _levelDataList = const [
     LevelData(
-      levelString: level1Map,
+      levelString: MiniLevel.level1,
       levelName: 'Level 1',
       width: 15,
       height: 10,
@@ -32,7 +33,7 @@ class Agent001Game extends FlameGame
       levelIndex: 0,
     ),
     LevelData(
-      levelString: level2Map,
+      levelString: MiniLevel.level2,
       levelName: 'Level 2',
       width: 24,
       height: 16,
@@ -40,12 +41,20 @@ class Agent001Game extends FlameGame
       levelIndex: 1,
     ),
     LevelData(
-      levelString: level3Map,
+      levelString: MiniLevel.level3,
       levelName: 'Level 3',
       width: 25,
       height: 15,
       gridSize: gridSize,
       levelIndex: 2,
+    ),
+    LevelData(
+      levelString: MiniLevel.level4,
+      levelName: 'Level 4',
+      width: 35,
+      height: 20,
+      gridSize: gridSize,
+      levelIndex: 3,
     ),
   ];
 
@@ -99,7 +108,12 @@ class Agent001Game extends FlameGame
       ),
     );
 
-    //add(Level());
+    _spritesMap.addAll(
+      await MiniLibrary.fromDataString(enemy).toSprites(
+        color: Colors.white,
+        pixelSize: 1,
+      ),
+    );
   }
 
   @override
