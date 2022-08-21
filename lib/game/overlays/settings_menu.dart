@@ -1,10 +1,8 @@
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/overlays/credits.dart';
-import 'package:agent_001/game/overlays/instructions.dart';
 import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/constants.dart';
 import 'package:pixel_border/pixel_border.dart';
-import 'package:agent_001/game/level/level.dart';
 import 'package:flutter/material.dart';
 
 class SettingsMenu extends StatelessWidget {

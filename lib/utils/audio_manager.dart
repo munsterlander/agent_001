@@ -9,7 +9,7 @@ class AudioManager {
 
   static Future<void> init() async {
     FlameAudio.bgm.initialize();
-    await FlameAudio.audioCache.loadAll([
+    final files = [
       'player_shoot.wav',
       'enemy_shoot.wav',
       'turret_shoot.wav',
@@ -17,7 +17,15 @@ class AudioManager {
       'boss_bgm.wav', */
       'player_step.wav',
       'door.wav',
-    ]);
+    ];
+    await FlameAudio.audioCache.loadAll(files);
+    await warmUp(files);
+  }
+
+  static Future<void> warmUp(List<String> files) async {
+    for (final file in files) {
+      await FlameAudio.play(file, volume: 0);
+    }
   }
 
   static void playSfx(String file) {
