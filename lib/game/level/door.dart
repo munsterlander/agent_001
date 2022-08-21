@@ -1,3 +1,4 @@
+import 'package:agent_001/utils/audio_manager.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -69,6 +70,7 @@ class Door extends SpriteComponent with CollisionCallbacks {
 
   void open() {
     hitbox.collisionType = CollisionType.inactive;
+    AudioManager.playSfx('door.wav');
     add(
       OpacityEffect.fadeOut(
         LinearEffectController(0.5),
