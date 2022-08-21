@@ -5,6 +5,7 @@ import 'package:agent_001/game/level/health_up.dart';
 import 'package:agent_001/game/level/key_component.dart';
 import 'package:agent_001/game/level/level.dart';
 import 'package:agent_001/game/level/wall_block.dart';
+import 'package:agent_001/game/overlays/game_over.dart';
 import 'package:agent_001/utils/audio_manager.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -194,6 +195,7 @@ class Player extends PositionComponent
           gameRef.playerData.health.value -= 5;
           if (gameRef.playerData.health.value == 0) {
             // parent.displayRetryOptions();
+            gameRef.overlays.add(GameOver.id);
           }
         } else {
           _circleHitbox.collisionType = CollisionType.inactive;
