@@ -33,6 +33,7 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
 
   @override
   Future<void>? onLoad() async {
+    gameRef.playerData.curretLevel = levelData.levelIndex;
     final map = MiniMap.fromDataString(levelData.levelString);
     if (levelData.levelIndex == 0) {
       gameRef.camera.snapTo(levelData.size / 2);
