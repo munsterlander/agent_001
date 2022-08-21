@@ -31,4 +31,5 @@ class SpriteIds {
   static const String enemyTurret = 'enemy_turret';
   static const String agentMan = 'agentMan';
   static const String enemy = 'enemy_stand';
+  static const String heart = 'heart';
 }
