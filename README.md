@@ -1,6 +1,16 @@
 # Agent-001
 
-A top down shooter game about Agent-001.
+Agent 001
+A top down shooter about Agent 001 who must brave the 1 bit world by avoiding the dangerous enemies on patrol all in the quest to rescue the sacred white flame!   All music was written with 1 bit restrictions, meaning, only 2 notes are ever played - F & B flat.
+
+Controls
+WASD/Arrow keys : Movement
+
+Mouse : Aiming
+
+Space : Fire
+
+See "More Information" for source code link, authors and license details
 
 ## About
 
