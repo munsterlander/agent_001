@@ -183,6 +183,7 @@ class Player extends PositionComponent
           other.open();
         }
       } else if (other is KeyComponent) {
+        AudioManager.playSfx('key.wav');
         ++keyCount;
         other.collect();
       } else if (other is HealthUp) {
@@ -190,6 +191,9 @@ class Player extends PositionComponent
             .clamp(0, gameRef.playerData.health.value + 25);
         other.collect();
       } else if (other is Bullet && other.bulletType == BulletType.enemy) {
+        other.removeFromParent();
+        AudioManager.playSfx('player_hit.wav');
+
         if (gameRef.playerData.health.value > 0) {
           gameRef.camera.shake(duration: 0.1, intensity: 1);
           gameRef.playerData.health.value -= 5;
