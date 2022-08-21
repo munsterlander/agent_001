@@ -6,6 +6,7 @@ import 'package:agent_001/utils/audio_manager.dart';
 import 'package:agent_001/utils/level_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame/extensions.dart';
 import 'package:flame/game.dart';
 import 'package:flame_mini_sprite/flame_mini_sprite.dart';
 import 'package:flutter/material.dart' show Colors;
@@ -23,6 +24,9 @@ class Agent001Game extends FlameGame
         MouseMovementDetector,
         PanDetector,
         HasTappables {
+  @override
+  Color backgroundColor() => const Color(0xFF000000);
+
   final _spritesMap = <String, Sprite>{};
   final _levelDataList = const [
     LevelData(

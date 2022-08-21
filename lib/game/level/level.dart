@@ -58,8 +58,10 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
       EnemyState.idle: await gameRef.loadSpriteAnimationFromDataString(enemy),
       EnemyState.shoot:
           await gameRef.loadSpriteAnimationFromDataString(enemyShootAnimation),
-      EnemyState.walk:
-          await gameRef.loadSpriteAnimationFromDataString(enemyWalkAnimation),
+      EnemyState.walk: await gameRef.loadSpriteAnimationFromDataString(
+        enemyWalkAnimation,
+        stepTime: 0.3,
+      ),
     };
 
     _spawnObjects(map, playerAnimationStateMap);
@@ -191,8 +193,22 @@ class Level extends PositionComponent with HasGameRef<Agent001Game> {
                 case SpriteIds.enemy:
                   {
                     final xy = objectData.value['targetPoint'].split(",");
+                    final hasKey = objectData.value['hasKey'];
+                    KeyComponent? keyComponent;
+
+                    if (hasKey != null) {
+                      keyComponent = KeyComponent(
+                        sprite: gameRef.getSprite(SpriteIds.key)!,
+                        position: Vector2(
+                          objectData.key.x * gridSize,
+                          objectData.key.y * gridSize,
+                        ),
+                        size: Vector2.all(gridSize) / 2,
+                      );
+                    }
 
                     final enemy = Enemy(
+                      keyComponent: keyComponent,
                       targetPosition:
                           Vector2(double.parse(xy[0]), double.parse(xy[1])) *
                               gridSize,
