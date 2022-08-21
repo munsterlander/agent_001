@@ -1,5 +1,6 @@
 import 'package:agent_001/game/game.dart';
 import 'package:agent_001/game/ui/button.dart';
+import 'package:agent_001/game/level/level.dart';
 import 'package:flutter/material.dart';
 
 class MainMenu extends StatelessWidget {
@@ -28,7 +29,9 @@ class MainMenu extends StatelessWidget {
               null /* ImageTextButton(
             cardText: 'Agent 001',
             buttonText: 'Play',
-            onPressed: () {},
+            onPressed: () {
+              Level(levelData: getLevelData(0)!)
+            },
           ) */
           ,
         ),
