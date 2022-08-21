@@ -30,8 +30,8 @@ class GameWon extends StatelessWidget {
               color: whiteTextColor,
             ),
           ),
-          height: 200,
-          width: 300,
+          height: 400,
+          width: 500,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
