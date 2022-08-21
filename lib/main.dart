@@ -43,8 +43,7 @@ class Agent001GameApp extends StatelessWidget {
             Instructions.id: (_, gameRef) => Instructions(gameRef: gameRef),
             GameOver.id: (_, Agent001Game gameRef) =>
                 GameOver(gameRef: gameRef),
-            GameWon.id: (_, Agent001Game gameRef) =>
-                GameWon(gameRef: gameRef),
+            GameWon.id: (_, Agent001Game gameRef) => GameWon(gameRef: gameRef),
             SettingsMenu.id: (_, Agent001Game gameRef) =>
                 SettingsMenu(gameRef: gameRef),
             Credits.id: (_, Agent001Game gameRef) => Credits(gameRef: gameRef),
