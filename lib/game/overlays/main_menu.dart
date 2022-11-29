@@ -56,7 +56,7 @@ class MainMenu extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteTextColor,
+                    backgroundColor: whiteTextColor,
                     shape: PixelBorder.shape(
                       borderRadius: BorderRadius.circular(10.0),
                       pixelSize: 5.0,
@@ -80,7 +80,7 @@ class MainMenu extends StatelessWidget {
                     gameRef.overlays.add(SettingsMenu.id);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteTextColor,
+                    backgroundColor: whiteTextColor,
                     shape: PixelBorder.shape(
                       borderRadius: BorderRadius.circular(10.0),
                       pixelSize: 5.0,
@@ -104,7 +104,7 @@ class MainMenu extends StatelessWidget {
                     gameRef.overlays.add(Instructions.id);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteTextColor,
+                    backgroundColor: whiteTextColor,
                     shape: PixelBorder.shape(
                       borderRadius: BorderRadius.circular(10.0),
                       pixelSize: 5.0,

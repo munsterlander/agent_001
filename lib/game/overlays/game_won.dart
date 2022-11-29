@@ -54,7 +54,7 @@ class GameWon extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteTextColor,
+                    backgroundColor: whiteTextColor,
                     shape: PixelBorder.shape(
                       borderRadius: BorderRadius.circular(10.0),
                       pixelSize: 5.0,

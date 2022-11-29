@@ -90,7 +90,7 @@ class SettingsMenu extends StatelessWidget {
                     gameRef.overlays.add(Credits.id);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteTextColor,
+                    backgroundColor: whiteTextColor,
                     shape: PixelBorder.shape(
                       borderRadius: BorderRadius.circular(10.0),
                       pixelSize: 5.0,
@@ -114,7 +114,7 @@ class SettingsMenu extends StatelessWidget {
                     gameRef.overlays.remove(id);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteTextColor,
+                    backgroundColor: whiteTextColor,
                     shape: PixelBorder.shape(
                       borderRadius: BorderRadius.circular(10.0),
                       pixelSize: 5.0,
