@@ -88,50 +88,50 @@ class Agent001Game extends FlameGame
     camera.viewport = FixedResolutionViewport(Vector2(640, 360) / 1.5);
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(blocks).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(door).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(key).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(nineTB).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(enemyTurret).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(enemy).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(heart).toSprites(
-        color: Colors.white,
         pixelSize: 1,
+        palette: [Colors.white],
       ),
     );
 
