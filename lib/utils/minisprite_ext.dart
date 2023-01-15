@@ -12,7 +12,7 @@ extension SpriteAnimationLoader on Game {
     double stepTime = 0.1,
   }) async {
     final spritesMap = await MiniLibrary.fromDataString(miniLibString)
-        .toSprites(pixelSize: pixelSize, palette: [color]);
+        .toSprites(pixelSize: pixelSize, palette: [Colors.transparent, color]);
 
     return SpriteAnimation.spriteList(
       spritesMap.values.toList(),

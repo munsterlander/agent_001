@@ -89,49 +89,49 @@ class Agent001Game extends FlameGame
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(blocks).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(door).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(key).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(nineTB).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(enemyTurret).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(enemy).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(heart).toSprites(
         pixelSize: 1,
-        palette: [Colors.white],
+        palette: [Colors.transparent, Colors.white],
       ),
     );
 
