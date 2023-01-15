@@ -76,8 +76,8 @@ class Player extends PositionComponent
   bool get isAlive => gameRef.playerData.health.value != 0;
 
   @override
-  Future<void>? onLoad() {
-    add(
+  Future<void> onLoad() async {
+    await add(
       _circleHitbox = CircleHitbox.relative(
         1,
         parentSize: size / 1.5,
@@ -85,7 +85,6 @@ class Player extends PositionComponent
         position: size / 2,
       )..collisionType = CollisionType.active,
     );
-    return super.onLoad();
   }
 
   @override
@@ -174,6 +173,7 @@ class Player extends PositionComponent
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollisionStart(intersectionPoints, other);
     if (isAlive) {
       if (other is Door) {
         if (other.state == DoorState.locked && keyCount > 0) {
@@ -210,7 +210,6 @@ class Player extends PositionComponent
         }
       }
     }
-    super.onCollisionStart(intersectionPoints, other);
   }
 
   void fire() {

@@ -18,9 +18,8 @@ class HealthUp extends SpriteComponent {
   late CircleHitbox hitbox;
 
   @override
-  Future<void>? onLoad() {
-    add(hitbox = CircleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+  Future<void>? onLoad() async {
+    await add(hitbox = CircleHitbox()..collisionType = CollisionType.passive);
   }
 
   void collect() {

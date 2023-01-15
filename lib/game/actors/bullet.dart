@@ -25,9 +25,8 @@ class Bullet extends RectangleComponent with CollisionCallbacks {
   }
 
   @override
-  Future<void>? onLoad() {
-    add(RectangleHitbox()..collisionType = CollisionType.active);
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(RectangleHitbox()..collisionType = CollisionType.active);
   }
 
   @override

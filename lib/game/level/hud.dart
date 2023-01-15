@@ -19,7 +19,7 @@ class Hud extends PositionComponent with HasGameRef<Agent001Game> {
   final _healthTextComponent = TextComponent(text: '100%');
 
   @override
-  Future<void>? onLoad() {
+  Future<void> onLoad() async {
     // decorator = Rotate3DDecorator(perspective: 0.01, angleY: 0.01);
 
     _healthTextComponent.textRenderer = TextPaint(
@@ -32,7 +32,7 @@ class Hud extends PositionComponent with HasGameRef<Agent001Game> {
 
     _healthTextComponent.position = Vector2.all(2);
 
-    add(
+    await add(
       NineTileBoxComponent(
         nineTileBox: NineTileBox(gameRef.getSprite(SpriteIds.button)!),
         position: gameRef.size - Vector2.all(20),
@@ -43,7 +43,6 @@ class Hud extends PositionComponent with HasGameRef<Agent001Game> {
     );
 
     gameRef.playerData.health.addListener(onHealthChanged);
-    return super.onLoad();
   }
 
   @override

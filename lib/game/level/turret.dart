@@ -57,9 +57,8 @@ class Turret extends SpriteComponent with HasGameRef<Agent001Game> {
   final _fireRateTimer = Timer(0.5, autoStart: false, repeat: true);
 
   @override
-  Future<void>? onLoad() {
-    add(CircleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(CircleHitbox()..collisionType = CollisionType.passive);
   }
 
   @override

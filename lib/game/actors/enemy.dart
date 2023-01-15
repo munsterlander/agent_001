@@ -100,8 +100,8 @@ class Enemy extends PositionComponent
   final SpriteAnimationGroupComponent<EnemyState> _animationGroupComponent;
 
   @override
-  Future<void>? onLoad() {
-    add(
+  Future<void> onLoad() async {
+    await add(
       _circleHitbox = CircleHitbox.relative(
         1,
         parentSize: size / 1.5,
@@ -110,14 +110,13 @@ class Enemy extends PositionComponent
       )..collisionType = CollisionType.active,
     );
 
-    add(
+    await add(
       _PlayerDetector(
         size: Vector2.all(range),
         anchor: Anchor.center,
         position: size / 2,
       ),
     );
-    return super.onLoad();
   }
 
   @override
@@ -223,9 +222,8 @@ class _PlayerDetector extends PositionComponent
   });
 
   @override
-  Future<void>? onLoad() {
-    add(CircleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(CircleHitbox()..collisionType = CollisionType.passive);
   }
 
   @override

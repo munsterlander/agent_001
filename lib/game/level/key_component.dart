@@ -18,9 +18,8 @@ class KeyComponent extends SpriteComponent {
   late ShapeHitbox hitbox;
 
   @override
-  Future<void>? onLoad() {
-    add(hitbox = CircleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(hitbox = CircleHitbox()..collisionType = CollisionType.passive);
   }
 
   void collect() {
