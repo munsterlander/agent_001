@@ -27,7 +27,7 @@ class Player extends PositionComponent
   Player({
     Map<PlayerState, SpriteAnimation>? animations,
     PlayerState? current,
-    Map<PlayerState, bool>? removeOnFinish,
+    Map<PlayerState, bool> removeOnFinish = const {},
     Paint? paint,
     super.position,
     super.size,

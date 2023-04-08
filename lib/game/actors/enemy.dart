@@ -23,7 +23,7 @@ class Enemy extends PositionComponent
     this.keyComponent,
     Map<EnemyState, SpriteAnimation>? animations,
     EnemyState? current,
-    Map<EnemyState, bool>? removeOnFinish,
+    Map<EnemyState, bool> removeOnFinish = const {},
     Paint? paint,
     super.position,
     super.size,
