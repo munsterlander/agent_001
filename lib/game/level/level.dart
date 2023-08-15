@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:agent_001/game/level/door.dart';
 import 'package:agent_001/game/level/health_up.dart';
 import 'package:agent_001/game/level/turret.dart';

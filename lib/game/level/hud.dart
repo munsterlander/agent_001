@@ -13,6 +13,7 @@ class Hud extends PositionComponent with HasGameRef<Agent001Game> {
     super.children,
     super.priority = 5,
   }) {
+    // ignore: deprecated_member_use
     positionType = PositionType.viewport;
   }
 

@@ -22,8 +22,7 @@ class Agent001Game extends FlameGame
         HasCollisionDetection,
         HasKeyboardHandlerComponents,
         MouseMovementDetector,
-        PanDetector,
-        HasTappables {
+        PanDetector {
   @override
   Color backgroundColor() => const Color(0xFF000000);
   final playerData = PlayerData();
@@ -85,6 +84,7 @@ class Agent001Game extends FlameGame
     await AudioManager.init();
     AudioManager.playBgm('background_slow.wav');
 
+    // ignore: deprecated_member_use
     camera.viewport = FixedResolutionViewport(Vector2(640, 360) / 1.5);
     _spritesMap.addAll(
       await MiniLibrary.fromDataString(blocks).toSprites(

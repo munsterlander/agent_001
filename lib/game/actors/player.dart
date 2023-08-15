@@ -199,6 +199,7 @@ class Player extends PositionComponent
         AudioManager.playSfx('player_hit.wav');
 
         if (gameRef.playerData.health.value > 0) {
+          // ignore: deprecated_member_use
           gameRef.camera.shake(duration: 0.1, intensity: 1);
           gameRef.playerData.health.value -= 5;
           if (gameRef.playerData.health.value == 0) {
